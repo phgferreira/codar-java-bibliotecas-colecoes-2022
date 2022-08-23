@@ -51,6 +51,6 @@ As classes devem estar divididas em pacotes. As classes que manipulam os arquivo
 
 Cuidado com os padrões camelCase do java. Respeite a padronização.
 
-
+Pense numa modelagem flexível e nas boas práticas de codificação e clean code.
 
 
