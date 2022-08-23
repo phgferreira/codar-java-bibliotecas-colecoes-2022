@@ -18,10 +18,10 @@ O usuário irá responder as perguntas e conforme ele responde uma pergunta a pr
 
 O TXT deve seguir o padrão abaixo:
 
-P1|Qual o seu nome completo?
-P2|Qual seu e-mail?
-P3|Qual sua idade?
-P4|Qual seu whatsapp ou celular?
+P1|Qual o seu nome completo?<br/>
+P2|Qual seu e-mail?<br/>
+P3|Qual sua idade?<br/>
+P4|Qual seu whatsapp ou celular?<br/>
   
   A idade permitida pelo formulário deve ser de no mínimo 16 anos. Caso a idade esteja abaixo do permitido deve ser exibida uma mensagem agradecendo o usuário e pedindo para ele tentar a inscrição novamente quando chegar na idade permitida.
   
