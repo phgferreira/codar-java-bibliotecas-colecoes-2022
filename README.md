@@ -29,18 +29,18 @@ P4|Qual seu whatsapp ou celular?<br/>
 - Quando o usuário terminar de responder as perguntas o formulário dele deve ser salvo no formato TXT com o nome do arquivo no padrão {nomeDoCandidato}.txt dentro de uma pasta chamada movimento-codar-2022 que deve ser criada dentro do projeto.
 - O nome do arquivo deve ser salvo em letras maíusculas sem acentos e sem espaços para evitar problemas de encoding quando rodar em sistemas operacionais diferentes.
 
-### Adicionar pergunta ao formulário
+### Menu Adicionar pergunta ao formulário
 
 Como informado deve possibilitar o usuário adicionar uma nova pergunta ao formulário e salvar o txt formulario.txt com essa alteração.
 Ao criar a mesma pergunta novamente o sistema não deve duplicar a pergunta dentro do txt e deve manter apenas uma.
 
-### Remover pergunta do formulário
+### Menu Remover pergunta do formulário
 
 Como informado deve possibilitar o usuário remover uma pergunta do formulário e salvar o txt formulario.txt com essa alteração.
 
 - Não deve ser possível apagar as perguntas de 1 a 4 pois elas são padrão e não podem ser removidas
 
-### Validar Formulários
+### Menu Validar Formulários
 
 - O programa deve ter uma funcionalidade que permita o administrador encontrar formulários duplicados e apresentá-los em tela. Um nome duplicado pode ser um homônimo, porém um e-mail + nome iguais com certeza indica uma duplicidade.
 
