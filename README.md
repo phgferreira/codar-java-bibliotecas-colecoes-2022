@@ -40,6 +40,10 @@ Como informado deve possibilitar o usuário remover uma pergunta do formulário 
 
 - Não deve ser possível apagar as perguntas de 1 a 4 pois elas são padrão e não podem ser removidas
 
+### Listar Formulários Cadastrados
+
+O programa deve ter uma funcionalidade que permita o administrador listar os nomes dos candidatos cadastrados agrupados por idade para fins de análise.
+
 ### Menu Validar Formulários
 
 O programa deve ter uma funcionalidade que permita o administrador encontrar formulários duplicados e apresentá-los em tela. Um nome duplicado pode ser um homônimo, porém um e-mail + nome iguais com certeza indica uma duplicidade.
