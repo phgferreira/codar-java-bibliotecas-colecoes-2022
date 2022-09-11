@@ -11,6 +11,7 @@ Crie um programa com um menu com as seguintes opções:
 - Adicionar pergunta ao formulário
 - Remover pergunta do formulário
 - Listar formulários cadastrados
+- Validar formulários
 
 ### Menu Candidatar-se
 
@@ -27,10 +28,6 @@ P4|Qual seu whatsapp ou celular?<br/>
   
 - Quando o usuário terminar de responder as perguntas o formulário dele deve ser salvo no formato TXT com o nome do arquivo no padrão {nomeDoCandidato}.txt dentro de uma pasta chamada movimento-codar-2022 que deve ser criada dentro do projeto.
 - O nome do arquivo deve ser salvo em letras maíusculas sem acentos e sem espaços para evitar problemas de encoding quando rodar em sistemas operacionais diferentes.
-- O programa não deve permitir o cadastro de dois candidatos com o mesmo e-mail e isso deve ser validado durante o cadastro do candidato.
-
-Dica: Salve o formulário do candidato no txt com uma estrutura que permita você realizar a varredura buscando se o email informado já existe.
-
 
 ### Adicionar pergunta ao formulário
 
@@ -42,6 +39,13 @@ Ao criar a mesma pergunta novamente o sistema não deve duplicar a pergunta dent
 Como informado deve possibilitar o usuário remover uma pergunta do formulário e salvar o txt formulario.txt com essa alteração.
 
 - Não deve ser possível apagar as perguntas de 1 a 4 pois elas são padrão e não podem ser removidas
+
+### Validar Formulários
+
+- O programa deve ter uma funcionalidade que permita o administrador encontrar formulários duplicados e apresentá-los em tela. Um nome duplicado pode ser um homônimo, porém um e-mail + nome iguais com certeza indica uma duplicidade.
+
+Dica: Salve o formulário do candidato no txt com uma estrutura que permita você realizar a varredura buscando se o email informado já existe.
+
 
 ### Outras regras
 
