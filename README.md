@@ -12,6 +12,7 @@ Crie um programa com um menu com as seguintes opções:
 - Remover pergunta do formulário
 - Listar formulários cadastrados
 - Validar formulários
+- Sair
 
 ### Menu Candidatar-se
 
@@ -40,9 +41,10 @@ Como informado deve possibilitar o usuário remover uma pergunta do formulário 
 
 - Não deve ser possível apagar as perguntas de 1 a 4 pois elas são padrão e não podem ser removidas
 
-### Listar Formulários Cadastrados
+### Menu Listar Formulários Cadastrados
 
-O programa deve ter uma funcionalidade que permita o administrador listar os nomes dos candidatos cadastrados agrupados por idade para fins de análise.
+O programa deve ter uma opção dentro desse menu que permita o administrador listar os nomes dos candidatos cadastrados agrupados por idade para fins de análise.
+Também deve existir uma outra opção que exiba a quantidade de candidatos por idade
 
 ### Menu Validar Formulários
 
@@ -61,4 +63,4 @@ Cuidado com os padrões camelCase do java. Respeite a padronização.
 
 Pense numa modelagem flexível e nas boas práticas de codificação e clean code.
 
-
+Todos os menus devem permitir o usuário sair do programa digitando uma opção
