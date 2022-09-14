@@ -63,4 +63,4 @@ Cuidado com os padrões camelCase do java. Respeite a padronização.
 
 Pense numa modelagem flexível e nas boas práticas de codificação e clean code.
 
-Todos os menus devem permitir o usuário sair do programa digitando uma opção
+Ao finalizar a ação de uma das opções dos menus o usuário deve ser enviado para o menu principal
