@@ -11,6 +11,7 @@ Crie um programa com um menu com as seguintes opções:
 - Adicionar pergunta ao formulário
 - Remover pergunta do formulário
 - Listar formulários cadastrados
+- Pesquisar formulários cadastrados
 - Validar formulários
 - Sair
 
@@ -47,6 +48,10 @@ Como informado deve possibilitar o usuário remover uma pergunta do formulário 
 
 O programa deve ter uma opção dentro desse menu que permita o administrador listar os nomes dos candidatos cadastrados agrupados por idade para fins de análise.
 Também deve existir uma outra opção que exiba a quantidade de candidatos por idade
+
+### Menu Pesquisar Formulários Cadastrados
+
+O programa deve permitir realizar a busca se um candidato está cadastrado nos formulários existentes. Lembre-se que o que define a unicidade de um cadastro no seu sistema é o nome do candidato + email.
 
 ### Menu Validar Formulários
 
