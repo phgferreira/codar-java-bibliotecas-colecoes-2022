@@ -30,6 +30,8 @@ P4|Qual seu whatsapp ou celular?<br/>
 - Quando o usuário terminar de responder as perguntas o formulário dele deve ser salvo no formato TXT com o nome do arquivo no padrão {numeroDoFormulario}-{nomeDoCandidato}.txt dentro de uma pasta chamada movimento-codar-2022 que deve ser criada dentro do projeto.
 - O nome do arquivo deve ser salvo em letras maíusculas sem acentos e sem espaços para evitar problemas de encoding quando rodar em sistemas operacionais diferentes.
 
+Dica: ao salvar os formulários no mesmo diretório você consegue saber qual o último número de formulário salvo
+
 ### Menu Adicionar pergunta ao formulário
 
 Como informado deve possibilitar o usuário adicionar uma nova pergunta ao formulário e salvar o txt formulario.txt com essa alteração.
