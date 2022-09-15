@@ -62,8 +62,6 @@ Dica: Salve o formulário do candidato no txt com uma estrutura que permita voc�
 
 ### Outras regras
 
-Deve ser possível voltar para o menu principal sempre que o usuário quiser digitando uma opção no console.
-
 As classes devem estar divididas em pacotes. As classes que manipulam os arquivos devem ser acessadas apenas por uma outra classe que forneça as funcionalidades para o menu principal.
 
 Cuidado com os padrões camelCase do java. Respeite a padronização.
