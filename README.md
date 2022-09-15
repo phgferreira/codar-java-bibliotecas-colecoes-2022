@@ -49,15 +49,15 @@ Como informado deve possibilitar o usuário remover uma pergunta do formulário 
 O programa deve ter uma opção dentro desse menu que permita o administrador listar os nomes dos candidatos cadastrados agrupados por idade para fins de análise.
 Também deve existir uma outra opção que exiba a quantidade de candidatos por idade
 
-### Menu Pesquisar Formulários Cadastrados
-
-O programa deve permitir realizar a busca se um candidato está cadastrado nos formulários existentes. Lembre-se que o que define a unicidade de um cadastro no seu sistema é o nome do candidato + email.
-
 ### Menu Validar Formulários
 
 O programa deve ter uma funcionalidade que permita o administrador encontrar formulários duplicados e apresentá-los em tela. Um nome duplicado pode ser um homônimo, porém um e-mail + nome iguais com certeza indica uma duplicidade.
 
 Dica: Salve o formulário do candidato no txt com uma estrutura que permita você realizar a varredura buscando se o email informado já existe.
+
+### Menu Pesquisar Formulários Cadastrados
+
+O programa deve permitir realizar a busca se um candidato está cadastrado nos formulários existentes. Lembre-se que o que define a unicidade de um cadastro no seu sistema é o nome do candidato + email.
 
 
 ### Outras regras
