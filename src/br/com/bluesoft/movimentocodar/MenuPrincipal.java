@@ -6,27 +6,28 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
+import br.com.bluesoft.movimentocodar.menu.Menu;
+import br.com.bluesoft.movimentocodar.menu.MenuCandidatarSe;
+
 public class MenuPrincipal {
 
-	List<String> opcoes;
-	Integer opcaoEscolhida = -1;
-	
 	public MenuPrincipal() {
-		opcoes = Arrays.asList(
-				"Candidatar-se",
-				"Adicionar pergunta ao formulário",
-				"Remover pergunta do formulário",
-				"Listar formulários cadastrados",
-				"Pesquisar formulários cadastrados",
-				"Validar formulários",
-				"Sair");
+		List<Menu> opcoes = Arrays.asList(
+				new MenuCandidatarSe()
+//				new MenuAdicionarPergunta(), //"Adicionar pergunta ao formulário"
+//				new MenuRemoverFormulario(), //"Remover pergunta do formulário"
+//				new MenuListarFormularios(), //"Listar formulários cadastrados"
+//				new MenuPesquisarFormularios(), //"Pesquisar formulários cadastrados"
+//				new MenuValidarFormularios(), //"Validar formulários"
+//				new MenuSair() //"Sair"
+			);
 		IntStream.range(0, opcoes.size())
-			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice)) );
+			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice).getTitulo()) );
 		
 		try {
 			Scanner reader = new Scanner(new InputStreamReader(System.in));
-			opcaoEscolhida = reader.nextInt();
-			System.out.println(opcoes.get(opcaoEscolhida));
+			Integer escolha = reader.nextInt();
+			opcoes.get(escolha).abreMenu();
 		} catch (RuntimeException e) {
 			System.err.println("Escolha apenas as opções numéricas existentes no menu"
 					+ System.lineSeparator() 
