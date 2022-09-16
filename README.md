@@ -5,7 +5,7 @@ Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movi
 
 ## Execução do desafio
 - Menu Principal:
-  - [ ] Acessar os menus
+  - [x] Acessar os menus
 - Menu Candidatar-se:
   - [ ] Ler perguntas do arquivo formulario.txt
   - [ ] Recebe resposta;
