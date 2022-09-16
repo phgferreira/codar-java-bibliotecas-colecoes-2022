@@ -9,7 +9,7 @@ public class MenuCandidatarSe implements Menu {
 
 	@Override
 	public void abreMenu() {
-		System.out.println("Menu " + getTitulo() + " aberto");
+		System.out.println("### " + this.getTitulo() + " ###");
 	}
 
 }

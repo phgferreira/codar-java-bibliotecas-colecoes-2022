@@ -9,9 +9,16 @@ import java.util.stream.IntStream;
 import br.com.bluesoft.movimentocodar.menu.Menu;
 import br.com.bluesoft.movimentocodar.menu.MenuCandidatarSe;
 
-public class MenuPrincipal {
+public class MenuPrincipal implements Menu {
 
-	public MenuPrincipal() {
+	@Override
+	public String getTitulo() {
+		return "Menu Principal";
+	}
+
+	@Override
+	public void abreMenu() {
+		System.out.println("### " + this.getTitulo() + " ###");
 		List<Menu> opcoes = Arrays.asList(
 				new MenuCandidatarSe()
 //				new MenuAdicionarPergunta(), //"Adicionar pergunta ao formulário"
@@ -33,5 +40,6 @@ public class MenuPrincipal {
 					+ System.lineSeparator() 
 					+ "Por favor tente novamente");
 		}
+		
 	}
 }

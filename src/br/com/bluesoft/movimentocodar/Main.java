@@ -6,7 +6,8 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		while(true) {
-			new MenuPrincipal();
+			new MenuPrincipal().abreMenu();
+			System.out.println("--- Volta ao MenuPrincipal ---");
 		}
 	}
 
