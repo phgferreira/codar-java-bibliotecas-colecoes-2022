@@ -2,6 +2,7 @@ package br.com.bluesoft.movimentocodar;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class MenuPrincipal {
 
@@ -16,7 +17,8 @@ public class MenuPrincipal {
 				"Pesquisar formulários cadastrados",
 				"Validar formulários",
 				"Sair");
-		opcoes.forEach(opcao -> System.out.println(opcao));
+		IntStream.range(0, opcoes.size())
+			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice)) );
 		
 	}
 }
