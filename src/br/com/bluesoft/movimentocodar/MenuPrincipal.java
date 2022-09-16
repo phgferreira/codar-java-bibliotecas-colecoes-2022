@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 public class MenuPrincipal {
 
 	List<String> opcoes;
+	Integer opcaoEscolhida = -1;
 	
 	public MenuPrincipal() {
 		opcoes = Arrays.asList(
@@ -24,13 +25,12 @@ public class MenuPrincipal {
 		
 		try {
 			Scanner reader = new Scanner(new InputStreamReader(System.in));
-			int opcaoEscolhida = reader.nextInt();
+			opcaoEscolhida = reader.nextInt();
 			System.out.println(opcoes.get(opcaoEscolhida));
 		} catch (RuntimeException e) {
 			System.err.println("Escolha apenas as opções numéricas existentes no menu"
 					+ System.lineSeparator() 
 					+ "Por favor tente novamente");
 		}
-
 	}
 }
