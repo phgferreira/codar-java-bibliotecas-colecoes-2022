@@ -1,10 +1,10 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-public class MenuCandidatarSe implements Menu {
+public class MenuRemoverFormulario implements Menu {
 
 	@Override
 	public String getTitulo() {
-		return "Candidatar-se";
+		return "Remover pergunta do formulário";
 	}
 
 	@Override

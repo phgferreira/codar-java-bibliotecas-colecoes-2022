@@ -18,12 +18,12 @@ public class MenuPrincipal implements Menu {
 		System.out.println("### " + this.getTitulo() + " ###");
 		List<Menu> opcoes = Arrays.asList(
 				new MenuCandidatarSe(),
-//				new MenuAdicionarPergunta(), //"Adicionar pergunta ao formulário"
-//				new MenuRemoverFormulario(), //"Remover pergunta do formulário"
-//				new MenuListarFormularios(), //"Listar formulários cadastrados"
-//				new MenuPesquisarFormularios(), //"Pesquisar formulários cadastrados"
-//				new MenuValidarFormularios(), //"Validar formulários"
-				new MenuSair() //"Sair"
+				new MenuAdicionarPergunta(),
+				new MenuRemoverFormulario(),
+				new MenuListarFormularios(),
+				new MenuPesquisarFormularios(),
+				new MenuValidarFormularios(),
+				new MenuSair()
 			);
 		IntStream.range(0, opcoes.size())
 			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice).getTitulo()) );
