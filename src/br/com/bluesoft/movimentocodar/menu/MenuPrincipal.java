@@ -17,13 +17,13 @@ public class MenuPrincipal implements Menu {
 	public void abreMenu() {
 		System.out.println("### " + this.getTitulo() + " ###");
 		List<Menu> opcoes = Arrays.asList(
-				new MenuCandidatarSe()
+				new MenuCandidatarSe(),
 //				new MenuAdicionarPergunta(), //"Adicionar pergunta ao formulário"
 //				new MenuRemoverFormulario(), //"Remover pergunta do formulário"
 //				new MenuListarFormularios(), //"Listar formulários cadastrados"
 //				new MenuPesquisarFormularios(), //"Pesquisar formulários cadastrados"
 //				new MenuValidarFormularios(), //"Validar formulários"
-//				new MenuSair() //"Sair"
+				new MenuSair() //"Sair"
 			);
 		IntStream.range(0, opcoes.size())
 			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice).getTitulo()) );
