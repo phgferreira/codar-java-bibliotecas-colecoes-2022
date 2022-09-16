@@ -1,13 +1,10 @@
-package br.com.bluesoft.movimentocodar;
+package br.com.bluesoft.movimentocodar.menu;
 
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
-
-import br.com.bluesoft.movimentocodar.menu.Menu;
-import br.com.bluesoft.movimentocodar.menu.MenuCandidatarSe;
 
 public class MenuPrincipal implements Menu {
 
