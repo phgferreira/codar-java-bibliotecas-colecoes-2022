@@ -5,31 +5,31 @@ Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movi
 
 ## Execução do desafio
 - Menu Principal:
-  - [] Acessar os menus
+  - [ ] Acessar os menus
 - Menu Candidatar-se:
-  - [] Ler perguntas do arquivo formulario.txt
-  - [] Recebe resposta;
-  - [] Passa para a próxima pergunta;
-  - [] Limitar candidatura para pessoas acima dos 16 anos;
-  - [] No final do questionários salvar respostas em arquivo.
+  - [ ] Ler perguntas do arquivo formulario.txt
+  - [ ] Recebe resposta;
+  - [ ] Passa para a próxima pergunta;
+  - [ ] Limitar candidatura para pessoas acima dos 16 anos;
+  - [ ] No final do questionários salvar respostas em arquivo.
 - Menu Adicionar pergunta ao formulário:
-  - [] Receber nova pergunta;
-  - [] Salvar no arquivo formulario.txt;
-  - [] Impedir duplicidade de perguntas.
+  - [ ] Receber nova pergunta;
+  - [ ] Salvar no arquivo formulario.txt;
+  - [ ] Impedir duplicidade de perguntas.
 - Menu Remover pergunta do formulário:
-  - [] Receber indentificador da pergunta que deve ser removida do formulario.txt;
-  - [] Impedir remoção das perguntas 1 a 4.
+  - [ ] Receber indentificador da pergunta que deve ser removida do formulario.txt;
+  - [ ] Impedir remoção das perguntas 1 a 4.
 - Menu Listar Formulários Cadastrados:
-  - [] Receber opção de submenu:
-    - [] listar nomes agrupados por idade;
-    - [] listar quantidade de candidatos por idade;
+  - [ ] Receber opção de submenu:
+    - [ ] listar nomes agrupados por idade;
+    - [ ] listar quantidade de candidatos por idade;
 - Menu Validar Formulários:
-  - [] Procurar formulários duplicados e exibir em tela;
-  - [] (Opcional) Pergunta se deseja remover duplicidade escolhendo um cadastro para ser mantido.
+  - [ ] Procurar formulários duplicados e exibir em tela;
+  - [ ] (Opcional) Pergunta se deseja remover duplicidade escolhendo um cadastro para ser mantido.
 - Menu Pesquisar Formulários Cadastrados:
-  - [] Recebe opção de consulta (nome ou email);
-  - [] Procura formulários e exibe em tela;
-  - [] (Opcional) Permite escolher mais opções de consulta.
+  - [ ] Recebe opção de consulta (nome ou email);
+  - [ ] Procura formulários e exibe em tela;
+  - [ ] (Opcional) Permite escolher mais opções de consulta.
 
 ---
 
