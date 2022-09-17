@@ -3,14 +3,11 @@ package br.com.bluesoft.movimentocodar.menu;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.Normalizer;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
@@ -32,7 +29,7 @@ public class MenuCandidatarSe implements Menu {
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
 		try {
-			carregaPerguntas();
+			perguntaRespostas = new FormularioPerguntas().carregaPerguntasEmLista();
 			iniciaQuestionario();
 			guardaCandidato();
 		} catch (IOException | IdadeNaoPermitidaException e) {
@@ -40,18 +37,6 @@ public class MenuCandidatarSe implements Menu {
 		}
 	}
 	
-	private void carregaPerguntas() throws FileNotFoundException {
-		Scanner scanner = new Scanner( new File("formulario.txt") );
-		// Usa o '|' e a quebr de linha como delimitador
-		scanner.useDelimiter( "\\||" + System.lineSeparator() );
-
-		perguntaRespostas = new ArrayList<>();
-		while (scanner.hasNext()) {
-			perguntaRespostas.add( new PerguntaResposta(scanner.next(), scanner.next()) );
-		}
-		
-		scanner.close();
-	}
 	
 	private void iniciaQuestionario() throws IOException, IdadeNaoPermitidaException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
