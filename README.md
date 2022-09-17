@@ -7,9 +7,9 @@ Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movi
 - Menu Principal:
   - [x] Acessar os menus
 - Menu Candidatar-se:
-  - [ ] Ler perguntas do arquivo formulario.txt
-  - [ ] Recebe resposta;
-  - [ ] Passa para a próxima pergunta;
+  - [x] Ler perguntas do arquivo formulario.txt
+  - [x] Recebe resposta;
+  - [x] Passa para a próxima pergunta;
   - [ ] Limitar candidatura para pessoas acima dos 16 anos;
   - [ ] No final do questionários salvar respostas em arquivo.
 - Menu Adicionar pergunta ao formulário:
