@@ -69,6 +69,8 @@ public class MenuCandidatarSe implements Menu {
 	}
 	
 	private void guardaCandidato() throws IOException {
+		verificaUltimoNumeroDeFormularios();
+
 		String URL = CAMINHO_PASTA_CANDIDATOS
 				+ CONTADOR + "-" + formataNomeParaArquivo(perguntaRespostas.get(0).getResposta())
 				+ "." + EXTENSAO_PADRAO;
@@ -86,7 +88,20 @@ public class MenuCandidatarSe implements Menu {
 
 		CONTADOR++;
 	}
-	
+
+	private void verificaUltimoNumeroDeFormularios() throws IOException {
+		
+		// Que código lixo kkkk tenho que melhorar isso aqui
+		File arquivos[] = new File(CAMINHO_PASTA_CANDIDATOS).listFiles();
+		for (File arquivo : arquivos) {
+			String nomeArquivo = arquivo.getName();
+			Integer maiorEncontrado = Integer.parseInt(nomeArquivo.substring(0, nomeArquivo.indexOf("-")));
+			if (maiorEncontrado >= CONTADOR)
+				CONTADOR = maiorEncontrado+1;
+		}
+		
+	}
+
 	private String formataNomeParaArquivo(String nome) {
         String nfdNormalizedString = Normalizer.normalize(nome, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
