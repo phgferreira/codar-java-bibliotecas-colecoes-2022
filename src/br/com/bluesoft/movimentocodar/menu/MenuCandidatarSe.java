@@ -13,9 +13,6 @@ import java.util.Scanner;
 
 import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
 
-/*
- * pr = PerguntaResposta
- */
 public class MenuCandidatarSe implements Menu {
 	
 	private List<PerguntaResposta> perguntaRespostas;
