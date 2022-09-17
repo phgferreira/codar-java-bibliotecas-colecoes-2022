@@ -49,6 +49,8 @@ public class MenuCandidatarSe implements Menu {
 		while (scanner.hasNext()) {
 			perguntaRespostas.add( new PerguntaResposta(scanner.next(), scanner.next()) );
 		}
+		
+		scanner.close();
 	}
 	
 	private void iniciaQuestionario() throws IOException {
