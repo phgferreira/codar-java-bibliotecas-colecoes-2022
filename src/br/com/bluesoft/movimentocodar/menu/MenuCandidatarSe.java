@@ -74,6 +74,8 @@ public class MenuCandidatarSe implements Menu {
 			writer.newLine();
 		}
 		writer.close();
+		
+		System.out.println("--- Candidato " + perguntaRespostas.get(0).getResposta() + " salvo com Sucesso ---");
 
 		CONTADOR++;
 	}
