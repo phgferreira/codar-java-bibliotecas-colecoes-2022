@@ -11,7 +11,7 @@ Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movi
   - [x] Recebe resposta;
   - [x] Passa para a próxima pergunta;
   - [ ] Limitar candidatura para pessoas acima dos 16 anos;
-  - [ ] No final do questionários salvar respostas em arquivo.
+  - [x] No final do questionários salvar respostas em arquivo.
 - Menu Adicionar pergunta ao formulário:
   - [ ] Receber nova pergunta;
   - [ ] Salvar no arquivo formulario.txt;
