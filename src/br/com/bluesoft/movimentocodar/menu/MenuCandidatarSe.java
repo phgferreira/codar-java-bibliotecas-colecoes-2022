@@ -27,12 +27,12 @@ public class MenuCandidatarSe implements Menu {
 		try {
 
 			Scanner scanner = new Scanner( new File("formulario.txt") );
-			scanner.useDelimiter("\\|");
+			// Usa o '|' e a quebr de linha como delimitador
+			scanner.useDelimiter( "\\||" + System.lineSeparator() );
 
 			perguntasERespostas = new ArrayList<>();
 			while (scanner.hasNext()) {
-				System.out.println(scanner.next() + ", " + scanner.next());
-				//perguntasERespostas.add( new PerguntaResposta(scanner.next(), scanner.next()) );
+				perguntasERespostas.add( new PerguntaResposta(scanner.next(), scanner.next()) );
 			}
 
 		} catch (FileNotFoundException e) {
