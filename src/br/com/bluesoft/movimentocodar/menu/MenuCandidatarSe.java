@@ -7,9 +7,11 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
@@ -68,7 +70,7 @@ public class MenuCandidatarSe implements Menu {
 	
 	private void guardaCandidato() throws IOException {
 		String URL = CAMINHO_PASTA_CANDIDATOS
-				+ CONTADOR + "-" + perguntaRespostas.get(0).getResposta()
+				+ CONTADOR + "-" + formataNomeParaArquivo(perguntaRespostas.get(0).getResposta())
 				+ "." + EXTENSAO_PADRAO;
 
 		BufferedWriter writer = new BufferedWriter(new FileWriter(URL));
@@ -83,6 +85,12 @@ public class MenuCandidatarSe implements Menu {
 		System.out.println("--- Candidato " + perguntaRespostas.get(0).getResposta() + " salvo com Sucesso ---");
 
 		CONTADOR++;
+	}
+	
+	private String formataNomeParaArquivo(String nome) {
+        String nfdNormalizedString = Normalizer.normalize(nome, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(nfdNormalizedString).replaceAll("").toUpperCase();
 	}
 
 }
