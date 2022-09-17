@@ -1,8 +1,10 @@
 package br.com.bluesoft.movimentocodar.menu;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -17,6 +19,9 @@ import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
 public class MenuCandidatarSe implements Menu {
 	
 	private List<PerguntaResposta> perguntaRespostas;
+	private static final String CAMINHO_PASTA_CANDIDATOS = "C:\\candidatos\\";
+	private static final String EXTENSAO_PADRAO = "txt";
+	private static int CONTADOR;
 
 	@Override
 	public String getTitulo() {
@@ -29,7 +34,7 @@ public class MenuCandidatarSe implements Menu {
 		try {
 			carregaPerguntas();
 			iniciaQuestionario();
-			perguntaRespostas.forEach(System.out::println);
+			guardaCandidato();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -52,6 +57,23 @@ public class MenuCandidatarSe implements Menu {
 			System.out.println(perguntaResposta.getPergunta());
 			perguntaResposta.setResposta(reader.readLine());
 		}
+	}
+	
+	private void guardaCandidato() throws IOException {
+		String URL = CAMINHO_PASTA_CANDIDATOS
+				+ CONTADOR + "-" + perguntaRespostas.get(0).getResposta()
+				+ "." + EXTENSAO_PADRAO;
+
+		BufferedWriter writer = new BufferedWriter(new FileWriter(URL));
+		for (PerguntaResposta perguntaResposta : perguntaRespostas) {
+			writer.write(perguntaResposta.getId() + "|" 
+					+ perguntaResposta.getPergunta() + "|"
+					+ perguntaResposta.getResposta());
+			writer.newLine();
+		}
+		writer.close();
+
+		CONTADOR++;
 	}
 
 }
