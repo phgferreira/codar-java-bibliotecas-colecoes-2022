@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
 
 public class MenuCandidatarSe implements Menu {
@@ -32,8 +33,8 @@ public class MenuCandidatarSe implements Menu {
 			carregaPerguntas();
 			iniciaQuestionario();
 			guardaCandidato();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException | IdadeNaoPermitidaException e) {
+			System.err.println(e.getMessage());
 		}
 	}
 	
@@ -50,12 +51,19 @@ public class MenuCandidatarSe implements Menu {
 		scanner.close();
 	}
 	
-	private void iniciaQuestionario() throws IOException {
+	private void iniciaQuestionario() throws IOException, IdadeNaoPermitidaException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		for (PerguntaResposta perguntaResposta : perguntaRespostas) {
 			System.out.println(perguntaResposta.getPergunta());
 			perguntaResposta.setResposta(reader.readLine());
 		}
+		
+		verificaIdadeDoCandidato();
+	}
+	
+	private void verificaIdadeDoCandidato() throws IdadeNaoPermitidaException {
+		if (Integer.parseInt(perguntaRespostas.get(2).getResposta()) < 16)
+			throw new IdadeNaoPermitidaException("Desculpa, você é muito jovem e a idade permita é de no mínimo 16 anos");
 	}
 	
 	private void guardaCandidato() throws IOException {
