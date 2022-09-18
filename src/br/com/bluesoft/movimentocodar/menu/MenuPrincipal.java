@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import br.com.bluesoft.movimentocodar.excecao.SemRespostaException;
-
 public class MenuPrincipal implements Menu {
 
 	@Override
@@ -29,11 +27,9 @@ public class MenuPrincipal implements Menu {
 			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice).getTitulo()) );
 		
 		try {
-			int escolha = InterfaceUsuario.perguntaAoUsuarioPegaInteiro(null);
+			int escolha = InterfaceUsuario.pegaInteiroDoUsuario();
 			opcoes.get(escolha).abreMenu();
-			// Estranho, eu não posso fechar o scanner e abrir outro novo
-			//scanner.close();
-		} catch (RuntimeException | SemRespostaException e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 			System.err.println("Escolha apenas as opções numéricas existentes no menu"
 					+ System.lineSeparator() 

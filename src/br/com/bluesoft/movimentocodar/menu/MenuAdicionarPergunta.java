@@ -1,6 +1,7 @@
 package br.com.bluesoft.movimentocodar.menu;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -16,14 +17,14 @@ public class MenuAdicionarPergunta implements Menu {
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
 		
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Qual pergunta gostaria de adicionar no formulário?");
-		String pergunta = scanner.next();
-		//scanner.close();
+		String pergunta = InterfaceUsuario.perguntaAoUsuarioPegaString("Qual pergunta gostaria de adicionar no formulário?");
+		
+		Scanner scannerFormulario = new Scanner( new File("formulario") );
+		
 
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("formulario.txt"));
-			writer.append(pergunta);
+			writer.;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

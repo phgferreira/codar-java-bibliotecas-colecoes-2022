@@ -1,10 +1,8 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Map;
 
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
@@ -39,14 +37,11 @@ public class MenuCandidatarSe implements Menu {
 	
 	
 	private void iniciaQuestionario() throws IOException, NumberFormatException, IdadeNaoPermitidaException {
-		BufferedReader reader = new BufferedReader( new InputStreamReader(System.in) );
-		
 		for (String idPergunta : perguntasERespostas.keySet()) {
-			System.out.println(perguntasERespostas.get(idPergunta).getPergunta());
-			perguntasERespostas.get(idPergunta).setResposta(reader.readLine());
+			String pergunta = perguntasERespostas.get(idPergunta).getPergunta();
+			String resposta = InterfaceUsuario.perguntaAoUsuarioPegaString(pergunta);
+			perguntasERespostas.get(idPergunta).setResposta(resposta);
 		}
-		
-		//reader.close();
 	}
 	
 	private void guardaCandidato() throws IOException {

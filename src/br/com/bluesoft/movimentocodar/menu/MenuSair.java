@@ -9,6 +9,10 @@ public class MenuSair implements Menu {
 
 	@Override
 	public void abreMenu() {
+		
+		// Fecha o InputStream de contato com o usuário
+		InterfaceUsuario.close();
+		
 		System.out.println("Volte Sempre! :)");
 		
 		// Termina a aplicação com sucesso

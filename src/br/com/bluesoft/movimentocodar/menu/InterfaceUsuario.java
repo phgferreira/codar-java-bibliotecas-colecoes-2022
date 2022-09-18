@@ -1,6 +1,5 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 import br.com.bluesoft.movimentocodar.excecao.SemRespostaException;
@@ -9,25 +8,40 @@ public class InterfaceUsuario {
 	
 	private static Scanner SCANNER;
 
-	private static void perguntaAoUsuario(Optional<String> texto) throws SemRespostaException {
-		if (!texto.isEmpty())
-			System.out.println(texto);
+	private static void pegaDoUsuario() {
 		SCANNER = new Scanner(System.in);
 		if (!SCANNER.hasNext())
 			throw new SemRespostaException("Sem resposta");
 	}
+
+	public static String pegaStringDoUsuario() {
+		pegaDoUsuario();
+		return SCANNER.next();
+	}
 	
-	public static String perguntaAoUsuarioPegaString(Optional<String> texto) throws SemRespostaException {
+	public static Integer pegaInteiroDoUsuario() {
+		pegaDoUsuario();
+		return SCANNER.nextInt();
+	}
+	
+	private static void perguntaAoUsuario(String texto) {
+		System.out.println(texto);
+		SCANNER = new Scanner(System.in);
+		if (!SCANNER.hasNext())
+			throw new SemRespostaException("Sem resposta");
+	}
+
+	public static String perguntaAoUsuarioPegaString(String texto) {
 		perguntaAoUsuario(texto);
 		return SCANNER.next();
 	}
 
-	public static Integer perguntaAoUsuarioPegaInteiro(Optional<String> texto) throws SemRespostaException {
+	public static Integer perguntaAoUsuarioPegaInteiro(String texto) {
 		perguntaAoUsuario(texto);
 		return SCANNER.nextInt();
 	}
 
-	public void close() {
+	public static void close() {
 		SCANNER.close();
 	}
 }
