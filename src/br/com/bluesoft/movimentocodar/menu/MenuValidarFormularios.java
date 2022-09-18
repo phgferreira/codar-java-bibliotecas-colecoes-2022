@@ -1,6 +1,12 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-public class MenuValidarFormularios implements Menu {
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+
+public class MenuValidarFormularios extends Menu {
+
+	public MenuValidarFormularios(InterfaceUsuario interfaceUsuario) {
+		super(interfaceUsuario);
+	}
 
 	@Override
 	public String getTitulo() {

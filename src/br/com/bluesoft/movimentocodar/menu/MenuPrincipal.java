@@ -7,8 +7,12 @@ import java.util.stream.IntStream;
 
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 
-public class MenuPrincipal implements Menu {
+public class MenuPrincipal extends Menu {
 
+	public MenuPrincipal(InterfaceUsuario interfaceUsuario) {
+		super(interfaceUsuario);
+	}
+	
 	@Override
 	public String getTitulo() {
 		return "Menu Principal";
@@ -18,19 +22,19 @@ public class MenuPrincipal implements Menu {
 	public void abreMenu() {
 		System.out.println("### " + this.getTitulo() + " ###");
 		List<Menu> opcoes = Arrays.asList(
-				new MenuCandidatarSe(),
-				new MenuAdicionarPergunta()
-//				new MenuRemoverFormulario(),
-//				new MenuListarFormularios(),
-//				new MenuPesquisarFormularios(),
-//				new MenuValidarFormularios(),
-//				new MenuSair()
+				new MenuCandidatarSe(interfaceUsuario),
+				new MenuAdicionarPergunta(interfaceUsuario)
+//				new MenuRemoverFormulario(interfaceUsuario),
+//				new MenuListarFormularios(interfaceUsuario),
+//				new MenuPesquisarFormularios(interfaceUsuario),
+//				new MenuValidarFormularios(interfaceUsuario),
+//				new MenuSair(interfaceUsuario)
 			);
 		IntStream.range(0, opcoes.size())
 			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice).getTitulo()) );
 		
 		try {
-			int escolha = new InterfaceUsuario().pegaRespostaEmInteiro();
+			int escolha = interfaceUsuario.pegaRespostaEmInteiro();
 			opcoes.get(escolha).abreMenu();
 		} catch (RuntimeException e) {
 			System.err.println("Escolha apenas as opções numéricas existentes no menu"

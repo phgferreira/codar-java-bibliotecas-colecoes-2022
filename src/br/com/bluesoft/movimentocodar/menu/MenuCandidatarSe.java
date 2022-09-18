@@ -12,8 +12,12 @@ import br.com.bluesoft.movimentocodar.io.VerificadorDoUltimoNumeroDeFormulario;
 import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
 import br.com.bluesoft.movimentocodar.util.FormatadorDeNomeParaArquivo;
 
-public class MenuCandidatarSe implements Menu {
+public class MenuCandidatarSe extends Menu {
 	
+	public MenuCandidatarSe(InterfaceUsuario interfaceUsuario) {
+		super(interfaceUsuario);
+	}
+
 	//private List<PerguntaResposta> perguntaRespostas;
 	private Map<String, PerguntaResposta> perguntasERespostas;
 	private static final String CAMINHO_PASTA_CANDIDATOS = "C:\\candidatos\\";
@@ -40,7 +44,7 @@ public class MenuCandidatarSe implements Menu {
 	private void iniciaQuestionario() throws IOException, NumberFormatException, IdadeNaoPermitidaException {
 		for (String idPergunta : perguntasERespostas.keySet()) {
 			String pergunta = perguntasERespostas.get(idPergunta).getPergunta();
-			String resposta = new InterfaceUsuario().perguntaAoUsuario(pergunta);
+			String resposta = interfaceUsuario.perguntaAoUsuario(pergunta);
 			perguntasERespostas.get(idPergunta).setResposta(resposta);
 		}
 	}

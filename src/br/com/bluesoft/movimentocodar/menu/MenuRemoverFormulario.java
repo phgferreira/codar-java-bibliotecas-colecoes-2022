@@ -1,6 +1,12 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-public class MenuRemoverFormulario implements Menu {
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+
+public class MenuRemoverFormulario extends Menu {
+
+	public MenuRemoverFormulario(InterfaceUsuario interfaceUsuario) {
+		super(interfaceUsuario);
+	}
 
 	@Override
 	public String getTitulo() {

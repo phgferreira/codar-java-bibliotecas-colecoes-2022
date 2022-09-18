@@ -25,7 +25,7 @@ public class InterfaceUsuario {
 		return reader.readLine();
 	}
 
-//	public void close() {
-//		reader.close();
-//	}
+	public void close() throws IOException {
+		reader.close();
+	}
 }

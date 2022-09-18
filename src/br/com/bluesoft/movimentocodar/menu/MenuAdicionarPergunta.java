@@ -9,7 +9,11 @@ import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
 
-public class MenuAdicionarPergunta implements Menu {
+public class MenuAdicionarPergunta extends Menu {
+
+	public MenuAdicionarPergunta(InterfaceUsuario interfaceUsuario) {
+		super(interfaceUsuario);
+	}
 
 	@Override
 	public String getTitulo() {
