@@ -1,7 +1,10 @@
 package br.com.bluesoft.movimentocodar.io;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,10 +15,13 @@ import br.com.bluesoft.movimentocodar.modelo.Pergunta;
 
 public class FormularioPerguntas {
 	
+	private static final String URL_FORMULARIO = "formulario.txt";
+	private File arquivo;
 	private Scanner scanner;
 	
 	public FormularioPerguntas() throws FileNotFoundException {
-		scanner = new Scanner( new File("formulario.txt") );
+		arquivo = new File(URL_FORMULARIO);
+		scanner = new Scanner( arquivo );
 		// Usa o '|' e a quebra de linha como delimitador
 		scanner.useDelimiter( "\\||" + System.lineSeparator() );
 	}
@@ -43,5 +49,16 @@ public class FormularioPerguntas {
 		
 		return perguntas;
 	}
+
+	public void atualizaPerguntas(List<Pergunta> perguntas) throws IOException {
+		BufferedWriter writer = new BufferedWriter( new FileWriter(arquivo) );
+		for (Pergunta pergunta : perguntas) {
+			writer.write(pergunta.getId() + "|" + pergunta.getPergunta() + System.lineSeparator());
+		}
+		writer.close();
+	}
 	
+	public void close() throws IOException {
+		scanner.close();
+	}
 }

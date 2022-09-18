@@ -9,9 +9,12 @@ import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 import br.com.bluesoft.movimentocodar.modelo.Pergunta;
 
 public class MenuAdicionarPergunta extends Menu {
+	
+	private FormularioPerguntas formularioPerguntas;
 
-	public MenuAdicionarPergunta(InterfaceUsuario interfaceUsuario) {
+	public MenuAdicionarPergunta(InterfaceUsuario interfaceUsuario, FormularioPerguntas formularioPerguntas) {
 		super(interfaceUsuario);
+		this.formularioPerguntas = formularioPerguntas;
 	}
 
 	@Override
@@ -27,17 +30,35 @@ public class MenuAdicionarPergunta extends Menu {
 		try {
 			String novaPergunta = interfaceUsuario.perguntaAoUsuario("Qual pergunta gostaria de adicionar ao formulário?");
 			
-			List<Pergunta> perguntas = new FormularioPerguntas().getPerguntasEmLista();
+			List<Pergunta> perguntas = formularioPerguntas.getPerguntasEmLista();
 			
 			if (perguntas.contains(new Pergunta(novaPergunta)))
-				throw new PerguntaRepetidaException("A pergunta " + novaPergunta + " já foi cadastrada");
+				throw new PerguntaRepetidaException("A pergunta '" + novaPergunta + "' já foi cadastrada");
+			else
+				guardaNovaPergunta(novaPergunta, perguntas);
 			
-			System.out.println("Vamos cadastrar a pergunta: " + novaPergunta);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (PerguntaRepetidaException e) {
 			System.err.println(e.getMessage());
 		}
+	}
+
+	private void guardaNovaPergunta(String novaPergunta, List<Pergunta> perguntas) throws IOException {
+		String novoId = verificaProximoIdPergunta(perguntas);
+		perguntas.add(new Pergunta(novoId, novaPergunta));
+		formularioPerguntas.atualizaPerguntas(perguntas);
+	}
+	
+	private String verificaProximoIdPergunta(List<Pergunta> perguntas) {
+		int maiorId = 0;
+		for (Pergunta pergunta : perguntas) {
+			int atualId = Integer.parseInt(pergunta.getId().substring(1));
+			if (atualId >= maiorId)
+				maiorId = atualId;
+		}
+		
+		return "P"+(maiorId+1);
 	}
 
 }

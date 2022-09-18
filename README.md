@@ -10,12 +10,12 @@ Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movi
   - [x] Ler perguntas do arquivo formulario.txt
   - [x] Recebe resposta;
   - [x] Passa para a próxima pergunta;
-  - [ ] Limitar candidatura para pessoas acima dos 16 anos;
+  - [X] Limitar candidatura para pessoas acima dos 16 anos;
   - [x] No final do questionários salvar respostas em arquivo.
 - Menu Adicionar pergunta ao formulário:
-  - [ ] Receber nova pergunta;
-  - [ ] Salvar no arquivo formulario.txt;
-  - [ ] Impedir duplicidade de perguntas.
+  - [x] Receber nova pergunta;
+  - [x] Salvar no arquivo formulario.txt;
+  - [x] Impedir duplicidade de perguntas.
 - Menu Remover pergunta do formulário:
   - [ ] Receber indentificador da pergunta que deve ser removida do formulario.txt;
   - [ ] Impedir remoção das perguntas 1 a 4.

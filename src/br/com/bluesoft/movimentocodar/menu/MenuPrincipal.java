@@ -5,14 +5,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 
 public class MenuPrincipal extends Menu {
-
-	public MenuPrincipal(InterfaceUsuario interfaceUsuario) {
-		super(interfaceUsuario);
-	}
 	
+	private FormularioPerguntas formularioPerguntas;
+
+	public MenuPrincipal(InterfaceUsuario interfaceUsuario, FormularioPerguntas formularioPerguntas) {
+		super(interfaceUsuario);
+		this.formularioPerguntas = formularioPerguntas;
+	}
+
 	@Override
 	public String getTitulo() {
 		return "Menu Principal";
@@ -22,8 +26,8 @@ public class MenuPrincipal extends Menu {
 	public void abreMenu() {
 		System.out.println("### " + this.getTitulo() + " ###");
 		List<Menu> opcoes = Arrays.asList(
-				new MenuCandidatarSe(interfaceUsuario),
-				new MenuAdicionarPergunta(interfaceUsuario),
+				new MenuCandidatarSe(interfaceUsuario, formularioPerguntas),
+				new MenuAdicionarPergunta(interfaceUsuario, formularioPerguntas),
 //				new MenuRemoverFormulario(interfaceUsuario),
 //				new MenuListarFormularios(interfaceUsuario),
 //				new MenuPesquisarFormularios(interfaceUsuario),

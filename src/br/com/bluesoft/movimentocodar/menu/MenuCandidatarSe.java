@@ -17,8 +17,11 @@ import br.com.bluesoft.movimentocodar.util.FormatadorDeNomeParaArquivo;
 
 public class MenuCandidatarSe extends Menu {
 	
-	public MenuCandidatarSe(InterfaceUsuario interfaceUsuario) {
+	private FormularioPerguntas formularioPerguntas;
+	
+	public MenuCandidatarSe(InterfaceUsuario interfaceUsuario, FormularioPerguntas formularioPerguntas) {
 		super(interfaceUsuario);
+		this.formularioPerguntas = formularioPerguntas;
 	}
 
 	//private List<PerguntaResposta> perguntaRespostas;
@@ -35,7 +38,7 @@ public class MenuCandidatarSe extends Menu {
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
 		try {
-			List<Pergunta> perguntas = new FormularioPerguntas().getPerguntasEmLista();
+			List<Pergunta> perguntas = formularioPerguntas.getPerguntasEmLista();
 			iniciaQuestionario(perguntas);
 			guardaCandidato();
 		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {
@@ -61,7 +64,7 @@ public class MenuCandidatarSe extends Menu {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(URL));
 		for (String idPergunta : perguntaComResposta.keySet()) {
 			writer.write(idPergunta + "|" 
-					+ perguntaComResposta.get(idPergunta).getPergunta() + "|"
+					+ perguntaComResposta.get(idPergunta).getPergunta().getPergunta() + "|"
 					+ perguntaComResposta.get(idPergunta).getResposta());
 			writer.newLine();
 		}
