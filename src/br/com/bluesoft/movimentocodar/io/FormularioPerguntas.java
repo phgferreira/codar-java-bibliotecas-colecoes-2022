@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
+import br.com.bluesoft.movimentocodar.modelo.PerguntaComResposta;
 
 public class FormularioPerguntas {
 	
@@ -20,16 +20,16 @@ public class FormularioPerguntas {
 		scanner.useDelimiter( "\\||" + System.lineSeparator() );
 	}
 
-	public List<PerguntaResposta> getSomentePerguntasEmLista() {
-		List<PerguntaResposta> perguntas = new ArrayList<>();
+	public List<PerguntaComResposta> getSomentePerguntasEmLista() {
+		List<PerguntaComResposta> perguntas = new ArrayList<>();
 		while (scanner.hasNext())
-			perguntas.add( new PerguntaResposta(scanner.next(), scanner.next()) );
+			perguntas.add( new PerguntaComResposta(scanner.next(), scanner.next()) );
 		
 		return perguntas;
 	}
 	
-	public Map<String, PerguntaResposta> getSomentePerguntasEmMapa() throws FileNotFoundException {
-		Map<String, PerguntaResposta> perguntas = new HashMap<>();
+	public Map<String, PerguntaComResposta> getSomentePerguntasEmMapa() throws FileNotFoundException {
+		Map<String, PerguntaComResposta> perguntas = new HashMap<>();
 		while (scanner.hasNext()) {
 			String idPergunta = scanner.next();
 			String resposta = scanner.next();
@@ -38,7 +38,7 @@ public class FormularioPerguntas {
 			 *  de perguntas específicas dentro da coleção e também é inserido na classe PerguntaResposta
 			 *  porque poderemos tratar respostas de perguntas específicas, como a idade, por exemplo.
 			 */
-			perguntas.put(idPergunta, new PerguntaResposta(idPergunta, resposta));
+			perguntas.put(idPergunta, new PerguntaComResposta(idPergunta, resposta));
 		}
 		
 		return perguntas;

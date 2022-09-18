@@ -9,7 +9,7 @@ import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 import br.com.bluesoft.movimentocodar.io.VerificadorDoUltimoNumeroDeFormulario;
-import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
+import br.com.bluesoft.movimentocodar.modelo.PerguntaComResposta;
 import br.com.bluesoft.movimentocodar.util.FormatadorDeNomeParaArquivo;
 
 public class MenuCandidatarSe extends Menu {
@@ -19,7 +19,7 @@ public class MenuCandidatarSe extends Menu {
 	}
 
 	//private List<PerguntaResposta> perguntaRespostas;
-	private Map<String, PerguntaResposta> perguntasERespostas;
+	private Map<String, PerguntaComResposta> perguntasERespostas;
 	private static final String CAMINHO_PASTA_CANDIDATOS = "C:\\candidatos\\";
 	private static final String EXTENSAO_PADRAO = "txt";
 

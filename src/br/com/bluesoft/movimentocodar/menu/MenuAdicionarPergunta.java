@@ -7,7 +7,7 @@ import java.util.List;
 
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
-import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
+import br.com.bluesoft.movimentocodar.modelo.PerguntaComResposta;
 
 public class MenuAdicionarPergunta extends Menu {
 
@@ -27,7 +27,7 @@ public class MenuAdicionarPergunta extends Menu {
 		try {
 			String pergunta = new InterfaceUsuario().perguntaAoUsuario("Qual pergunta gostaria de adicionar no formulário?");
 
-			List<PerguntaResposta> teste = new FormularioPerguntas().getSomentePerguntasEmLista();
+			List<PerguntaComResposta> teste = new FormularioPerguntas().getSomentePerguntasEmLista();
 			BufferedWriter writer = new BufferedWriter(new FileWriter("formulario.txt"));
 			//
 		} catch (IOException e) {

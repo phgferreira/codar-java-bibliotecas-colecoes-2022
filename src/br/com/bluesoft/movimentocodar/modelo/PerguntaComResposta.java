@@ -3,22 +3,16 @@ package br.com.bluesoft.movimentocodar.modelo;
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.util.VerificadorDeIdade;
 
-public class PerguntaResposta {
+public class PerguntaComResposta {
 
-	private String idPergunta;
-	private String pergunta;
+	private Pergunta pergunta;
 	private String resposta;
 
-	public PerguntaResposta(String idPergunta, String pergunta) {
-		this.idPergunta = idPergunta;
+	public PerguntaComResposta(Pergunta pergunta) {
 		this.pergunta = pergunta;
 	}
 	
-	public String getIdPergunta() {
-		return idPergunta;
-	}
-	
-	public String getPergunta() {
+	public Pergunta getPergunta() {
 		return pergunta;
 	}
 	
@@ -28,7 +22,7 @@ public class PerguntaResposta {
 	
 	public void setResposta(String resposta) throws NumberFormatException, IdadeNaoPermitidaException {
 		// Se idPergunta for igual a P3 então estão respondendo a idade
-		if (idPergunta.equals("P3"))
+		if (pergunta.getId().equals("P3"))
 			new VerificadorDeIdade().verificaIdade( Integer.parseInt(resposta) );
 		this.resposta = resposta;
 	}
