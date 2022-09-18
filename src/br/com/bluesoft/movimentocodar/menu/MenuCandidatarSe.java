@@ -29,7 +29,7 @@ public class MenuCandidatarSe implements Menu {
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
 		try {
-			perguntasERespostas = new FormularioPerguntas().getSomentePerguntasEmLista();
+			perguntasERespostas = FormularioPerguntas.getSomentePerguntasEmLista();
 			iniciaQuestionario();
 //			guardaCandidato();
 		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {

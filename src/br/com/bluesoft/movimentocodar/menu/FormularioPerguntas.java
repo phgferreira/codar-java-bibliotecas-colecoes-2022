@@ -10,7 +10,7 @@ import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
 
 public class FormularioPerguntas {
 
-	public List<PerguntaResposta> getSomentePerguntasEmLista() throws FileNotFoundException {
+	public static List<PerguntaResposta> getSomentePerguntasEmLista() throws FileNotFoundException {
 		Scanner scanner = new Scanner( new File("formulario.txt") );
 		// Usa o '|' e a quebra de linha como delimitador
 		scanner.useDelimiter( "\\||" + System.lineSeparator() );
