@@ -1,6 +1,5 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -29,10 +28,13 @@ public class MenuPrincipal implements Menu {
 			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice).getTitulo()) );
 		
 		try {
-			Scanner reader = new Scanner(new InputStreamReader(System.in));
-			Integer escolha = reader.nextInt();
+			Scanner scanner = new Scanner(System.in);
+			int escolha = scanner.nextInt();//scanner.nextInt();
 			opcoes.get(escolha).abreMenu();
+			// Estranho, eu não posso fechar o scanner e abrir outro novo
+			//scanner.close();
 		} catch (RuntimeException e) {
+			e.printStackTrace();
 			System.err.println("Escolha apenas as opções numéricas existentes no menu"
 					+ System.lineSeparator() 
 					+ "Por favor tente novamente");

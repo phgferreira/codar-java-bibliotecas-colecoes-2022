@@ -12,7 +12,7 @@ public class VerificadorDoUltimoNumeroDeFormulario {
 	 * @param caminho da pasta de formulários
 	 * @return o maior número de formuário encontrado no caminho da pasta de formulários
 	 */
-	public static Integer verifica(String caminhoFormularios) {
+	public Integer verifica(String caminhoFormularios) {
 		File arquivos[] = new File(caminhoFormularios).listFiles();
 
 		Integer maiorNumeroEncontrado = 0;
@@ -26,7 +26,7 @@ public class VerificadorDoUltimoNumeroDeFormulario {
 				maiorNumeroEncontrado = novoNumero;
 		}
 		
-		return maiorNumeroEncontrado;
+		return maiorNumeroEncontrado+1;
 	}
 
 }

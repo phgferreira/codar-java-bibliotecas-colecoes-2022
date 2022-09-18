@@ -29,7 +29,7 @@ public class MenuCandidatarSe implements Menu {
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
 		try {
-			perguntasERespostas = FormularioPerguntas.getSomentePerguntasEmMapa();
+			perguntasERespostas = new FormularioPerguntas().getSomentePerguntasEmMapa();
 			iniciaQuestionario();
 			guardaCandidato();
 		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {
@@ -46,14 +46,14 @@ public class MenuCandidatarSe implements Menu {
 			perguntasERespostas.get(idPergunta).setResposta(reader.readLine());
 		}
 		
-		reader.close();
+		//reader.close();
 	}
 	
 	private void guardaCandidato() throws IOException {
 
 		String URL = CAMINHO_PASTA_CANDIDATOS
-				+ VerificadorDoUltimoNumeroDeFormulario.verifica(CAMINHO_PASTA_CANDIDATOS)
-				+ "-" + FormatadorDeNomeParaArquivo.formata(perguntasERespostas.get("P1").getResposta())
+				+ new VerificadorDoUltimoNumeroDeFormulario().verifica(CAMINHO_PASTA_CANDIDATOS)
+				+ "-" + new FormatadorDeNomeParaArquivo().formata(perguntasERespostas.get("P1").getResposta())
 				+ "." + EXTENSAO_PADRAO;
 
 		BufferedWriter writer = new BufferedWriter(new FileWriter(URL));
