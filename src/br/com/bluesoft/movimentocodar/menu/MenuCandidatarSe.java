@@ -1,13 +1,10 @@
 package br.com.bluesoft.movimentocodar.menu;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.Normalizer;
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
@@ -33,7 +30,7 @@ public class MenuCandidatarSe implements Menu {
 		try {
 			perguntasERespostas = FormularioPerguntas.getSomentePerguntasEmLista();
 			iniciaQuestionario();
-//			guardaCandidato();
+			guardaCandidato();
 		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {
 			System.err.println(e.getMessage());
 		}
@@ -50,6 +47,8 @@ public class MenuCandidatarSe implements Menu {
 			System.out.println(perguntaEResposta.getPergunta());
 			perguntaEResposta.setResposta(scanner.next());
 		}
+		
+		scanner.close();
 	}
 	
 	private void guardaCandidato() throws IOException {
@@ -67,7 +66,7 @@ public class MenuCandidatarSe implements Menu {
 		}
 		writer.close();
 		
-		System.out.println("--- Candidato " + perguntaRespostas.get(0).getResposta() + " salvo com Sucesso ---");
+		//System.out.println("--- Candidato " + perguntaRespostas.get(0).getResposta() + " salvo com Sucesso ---");
 	}
 
 }

@@ -1,7 +1,6 @@
 package br.com.bluesoft.movimentocodar.io;
 
 import java.io.File;
-import java.io.IOException;
 
 public class VerificadorDoUltimoNumeroDeFormulario {
 
@@ -10,10 +9,10 @@ public class VerificadorDoUltimoNumeroDeFormulario {
 	 * é porque tive a visão dele poder ser utilizado em várias máquinas que podem trabalhar
 	 * em um mesmo diretório de dados simultâneamente. Mas se for melhor posso mudar para um
 	 * simples contador
-	 * @return
-	 * @throws IOException
+	 * @param caminho da pasta de formulários
+	 * @return o maior número de formuário encontrado no caminho da pasta de formulários
 	 */
-	public static String verifica(String caminhoFormularios) {
+	public static Integer verifica(String caminhoFormularios) {
 		File arquivos[] = new File(caminhoFormularios).listFiles();
 
 		Integer maiorNumeroEncontrado = 0;
