@@ -6,38 +6,32 @@ import br.com.bluesoft.movimentocodar.excecao.SemRespostaException;
 
 public class InterfaceUsuario {
 	
-	private static Scanner SCANNER;
+	private static Scanner SCANNER = new Scanner(System.in);
 
-	private static void pegaDoUsuario() {
-		SCANNER = new Scanner(System.in);
+	private static void checaResposta() {
 		if (!SCANNER.hasNext())
 			throw new SemRespostaException("Sem resposta");
 	}
 
 	public static String pegaStringDoUsuario() {
-		pegaDoUsuario();
+		checaResposta();
 		return SCANNER.next();
 	}
 	
 	public static Integer pegaInteiroDoUsuario() {
-		pegaDoUsuario();
+		checaResposta();
 		return SCANNER.nextInt();
 	}
 	
-	private static void perguntaAoUsuario(String texto) {
-		System.out.println(texto);
-		SCANNER = new Scanner(System.in);
-		if (!SCANNER.hasNext())
-			throw new SemRespostaException("Sem resposta");
-	}
-
 	public static String perguntaAoUsuarioPegaString(String texto) {
-		perguntaAoUsuario(texto);
+		System.out.println(texto);
+		checaResposta();
 		return SCANNER.next();
 	}
 
 	public static Integer perguntaAoUsuarioPegaInteiro(String texto) {
-		perguntaAoUsuario(texto);
+		System.out.println(texto);
+		checaResposta();
 		return SCANNER.nextInt();
 	}
 
