@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
+import java.util.Map;
 
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
@@ -16,7 +16,7 @@ import br.com.bluesoft.movimentocodar.util.FormatadorDeNomeParaArquivo;
 public class MenuCandidatarSe implements Menu {
 	
 	//private List<PerguntaResposta> perguntaRespostas;
-	private List<PerguntaResposta> perguntasERespostas;
+	private Map<String, PerguntaResposta> perguntasERespostas;
 	private static final String CAMINHO_PASTA_CANDIDATOS = "C:\\candidatos\\";
 	private static final String EXTENSAO_PADRAO = "txt";
 
@@ -29,7 +29,7 @@ public class MenuCandidatarSe implements Menu {
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
 		try {
-			perguntasERespostas = FormularioPerguntas.getSomentePerguntasEmLista();
+			perguntasERespostas = FormularioPerguntas.getSomentePerguntasEmMapa();
 			iniciaQuestionario();
 			guardaCandidato();
 		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {
@@ -41,12 +41,9 @@ public class MenuCandidatarSe implements Menu {
 	private void iniciaQuestionario() throws IOException, NumberFormatException, IdadeNaoPermitidaException {
 		BufferedReader reader = new BufferedReader( new InputStreamReader(System.in) );
 		
-		/* Até pensei em usar o lambda mas o IOException do scanner.next precisa ser tratado
-		 * dentro no lambda e eu quero que seja tratado fora
-		 */
-		for (PerguntaResposta perguntaEResposta : perguntasERespostas) {
-			System.out.println(perguntaEResposta.getPergunta());
-			perguntaEResposta.setResposta(reader.readLine());
+		for (String idPergunta : perguntasERespostas.keySet()) {
+			System.out.println(perguntasERespostas.get(idPergunta).getPergunta());
+			perguntasERespostas.get(idPergunta).setResposta(reader.readLine());
 		}
 		
 		reader.close();
@@ -55,19 +52,21 @@ public class MenuCandidatarSe implements Menu {
 	private void guardaCandidato() throws IOException {
 
 		String URL = CAMINHO_PASTA_CANDIDATOS
-				+ VerificadorDoUltimoNumeroDeFormulario.verifica(CAMINHO_PASTA_CANDIDATOS) + "-" + FormatadorDeNomeParaArquivo.formata(perguntasERespostas.get(0).getResposta())
+				+ VerificadorDoUltimoNumeroDeFormulario.verifica(CAMINHO_PASTA_CANDIDATOS)
+				+ "-" + FormatadorDeNomeParaArquivo.formata(perguntasERespostas.get("P1").getResposta())
 				+ "." + EXTENSAO_PADRAO;
 
 		BufferedWriter writer = new BufferedWriter(new FileWriter(URL));
-		for (PerguntaResposta perguntaEResposta : perguntasERespostas) {
-			writer.write(perguntaEResposta.getIdPergunta() + "|" 
-					+ perguntaEResposta.getPergunta() + "|"
-					+ perguntaEResposta.getResposta());
+		for (String idPergunta : perguntasERespostas.keySet()) {
+			writer.write(idPergunta + "|" 
+					+ perguntasERespostas.get(idPergunta).getPergunta() + "|"
+					+ perguntasERespostas.get(idPergunta).getResposta());
 			writer.newLine();
 		}
+		
 		writer.close();
 		
-		//System.out.println("--- Candidato " + perguntaRespostas.get(0).getResposta() + " salvo com Sucesso ---");
+		System.out.println("--- Candidato " + perguntasERespostas.get("P1").getResposta() + " salvo com Sucesso ---");
 	}
 
 }
