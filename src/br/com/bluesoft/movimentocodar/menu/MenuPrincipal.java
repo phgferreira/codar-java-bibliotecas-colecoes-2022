@@ -28,7 +28,7 @@ public class MenuPrincipal extends Menu {
 		List<Menu> opcoes = Arrays.asList(
 				new MenuCandidatarSe(interfaceUsuario, formularioPerguntas),
 				new MenuAdicionarPergunta(interfaceUsuario, formularioPerguntas),
-//				new MenuRemoverFormulario(interfaceUsuario),
+				new MenuRemoverFormulario(interfaceUsuario, formularioPerguntas),
 //				new MenuListarFormularios(interfaceUsuario),
 //				new MenuPesquisarFormularios(interfaceUsuario),
 //				new MenuValidarFormularios(interfaceUsuario),

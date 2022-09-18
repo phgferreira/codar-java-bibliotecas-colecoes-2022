@@ -17,7 +17,7 @@ Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movi
   - [x] Salvar no arquivo formulario.txt;
   - [x] Impedir duplicidade de perguntas.
 - Menu Remover pergunta do formulário:
-  - [ ] Receber indentificador da pergunta que deve ser removida do formulario.txt;
+  - [x] Receber indentificador da pergunta que deve ser removida do formulario.txt;
   - [ ] Impedir remoção das perguntas 1 a 4.
 - Menu Listar Formulários Cadastrados:
   - [ ] Receber opção de submenu:
