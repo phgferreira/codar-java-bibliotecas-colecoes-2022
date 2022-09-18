@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+
 public class MenuAdicionarPergunta implements Menu {
 
 	@Override

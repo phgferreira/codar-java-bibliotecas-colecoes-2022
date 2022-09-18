@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+
 public class MenuPrincipal implements Menu {
 
 	@Override

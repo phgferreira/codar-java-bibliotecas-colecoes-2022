@@ -7,6 +7,7 @@ import java.util.Map;
 
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 import br.com.bluesoft.movimentocodar.io.VerificadorDoUltimoNumeroDeFormulario;
 import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
 import br.com.bluesoft.movimentocodar.util.FormatadorDeNomeParaArquivo;

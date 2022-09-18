@@ -1,4 +1,4 @@
-package br.com.bluesoft.movimentocodar.menu;
+package br.com.bluesoft.movimentocodar.io;
 
 import java.util.Scanner;
 
