@@ -23,12 +23,12 @@ public class MenuPrincipal extends Menu {
 		System.out.println("### " + this.getTitulo() + " ###");
 		List<Menu> opcoes = Arrays.asList(
 				new MenuCandidatarSe(interfaceUsuario),
-				new MenuAdicionarPergunta(interfaceUsuario)
+				new MenuAdicionarPergunta(interfaceUsuario),
 //				new MenuRemoverFormulario(interfaceUsuario),
 //				new MenuListarFormularios(interfaceUsuario),
 //				new MenuPesquisarFormularios(interfaceUsuario),
 //				new MenuValidarFormularios(interfaceUsuario),
-//				new MenuSair(interfaceUsuario)
+				new MenuSair(interfaceUsuario)
 			);
 		IntStream.range(0, opcoes.size())
 			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice).getTitulo()) );
