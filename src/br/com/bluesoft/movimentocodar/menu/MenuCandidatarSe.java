@@ -1,8 +1,13 @@
 package br.com.bluesoft.movimentocodar.menu;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Map;
+import java.text.Normalizer;
+import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
@@ -10,10 +15,9 @@ import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
 public class MenuCandidatarSe implements Menu {
 	
 	//private List<PerguntaResposta> perguntaRespostas;
-	private Map<String, PerguntaResposta> perguntasERespostas;
+	private List<PerguntaResposta> perguntasERespostas;
 	private static final String CAMINHO_PASTA_CANDIDATOS = "C:\\candidatos\\";
 	private static final String EXTENSAO_PADRAO = "txt";
-	private static int CONTADOR;
 
 	@Override
 	public String getTitulo() {
@@ -24,73 +28,75 @@ public class MenuCandidatarSe implements Menu {
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
 		try {
-			perguntasERespostas = new FormularioPerguntas().asMap();
+			perguntasERespostas = new FormularioPerguntas().getSomentePerguntasEmLista();
 			iniciaQuestionario();
 //			guardaCandidato();
-		} catch (IOException | IdadeNaoPermitidaException e) {
+		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {
 			System.err.println(e.getMessage());
 		}
 	}
 	
 	
-	private void iniciaQuestionario() throws IOException, IdadeNaoPermitidaException {
+	private String iniciaQuestionario() throws IOException, NumberFormatException, IdadeNaoPermitidaException {
 		Scanner scanner = new Scanner(System.in);
 		
-		for (String idPergunta : perguntasERespostas.keySet()) {
-			System.out.println(perguntasERespostas.get(idPergunta).getPergunta());
-			perguntasERespostas.get(idPergunta).setResposta(scanner.next());
+		/* Até pensei em usar o lambda mas o IOException do scanner.next precisa ser tratado
+		 * dentro do lambda e eu quero que seja tratado fora
+		 */
+		for (PerguntaResposta perguntaEResposta : perguntasERespostas) {
+			System.out.println(perguntaEResposta.getPergunta());
+			perguntaEResposta.setResposta(scanner.next());
 		}
-//		for (PerguntaResposta perguntaResposta : perguntaRespostas) {
-//			System.out.println(perguntaResposta.getPergunta());
-//			perguntaResposta.setResposta(reader.readLine());
-//		}
-		
-//		verificaIdadeDoCandidato();
 	}
 	
-//	private void verificaIdadeDoCandidato() throws IdadeNaoPermitidaException {
-//		if (Integer.parseInt(perguntaRespostas.get(2).getResposta()) < 16)
-//			throw new IdadeNaoPermitidaException("Desculpa, você é muito jovem e a idade permita é de no mínimo 16 anos");
-//	}
-	
-//	private void guardaCandidato() throws IOException {
-//		verificaUltimoNumeroDeFormularios();
-//
-//		String URL = CAMINHO_PASTA_CANDIDATOS
-//				+ CONTADOR + "-" + formataNomeParaArquivo(perguntaRespostas.get(0).getResposta())
-//				+ "." + EXTENSAO_PADRAO;
-//
-//		BufferedWriter writer = new BufferedWriter(new FileWriter(URL));
-//		for (PerguntaResposta perguntaResposta : perguntaRespostas) {
-//			writer.write(perguntaResposta.getId() + "|" 
-//					+ perguntaResposta.getPergunta() + "|"
-//					+ perguntaResposta.getResposta());
-//			writer.newLine();
-//		}
-//		writer.close();
-//		
-//		System.out.println("--- Candidato " + perguntaRespostas.get(0).getResposta() + " salvo com Sucesso ---");
-//
-//		CONTADOR++;
-//	}
+	private void guardaCandidato() throws IOException {
 
-//	private void verificaUltimoNumeroDeFormularios() throws IOException {
-//		
-//		// Que código lixo kkkk tenho que melhorar isso aqui
-//		File arquivos[] = new File(CAMINHO_PASTA_CANDIDATOS).listFiles();
-//		for (File arquivo : arquivos) {
-//			String nomeArquivo = arquivo.getName();
-//			Integer maiorEncontrado = Integer.parseInt(nomeArquivo.substring(0, nomeArquivo.indexOf("-")));
-//			if (maiorEncontrado >= CONTADOR)
-//				CONTADOR = maiorEncontrado+1;
-//		}
-//		
-//	}
+		String URL = CAMINHO_PASTA_CANDIDATOS
+				+ verificaUltimoNumeroDeFormularios() + "-" + formataNomeParaArquivo(perguntasERespostas.get(0).getResposta())
+				+ "." + EXTENSAO_PADRAO;
 
-//	private String formataNomeParaArquivo(String nome) {
-//        String nfdNormalizedString = Normalizer.normalize(nome, Normalizer.Form.NFD);
-//        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-//        return pattern.matcher(nfdNormalizedString).replaceAll("").toUpperCase();
-//	}
+		BufferedWriter writer = new BufferedWriter(new FileWriter(URL));
+		for (PerguntaResposta perguntaEResposta : perguntasERespostas) {
+			writer.write(perguntaEResposta.getIdPergunta() + "|" 
+					+ perguntaEResposta.getPergunta() + "|"
+					+ perguntaEResposta.getResposta());
+			writer.newLine();
+		}
+		writer.close();
+		
+		System.out.println("--- Candidato " + perguntaRespostas.get(0).getResposta() + " salvo com Sucesso ---");
+	}
+
+	/**
+	 * O motivo de usar esse método toda vez que inicia um cadastro, o que é mais trabalhoso,
+	 * é porque tive a visão dele poder ser utilizado em várias máquinas que podem trabalhar
+	 * em um mesmo diretório de dados simultâneamente. Mas se for melhor posso mudar para um
+	 * simples contador
+	 * @return
+	 * @throws IOException
+	 */
+	private Integer verificaUltimoNumeroDeFormularios() throws IOException {
+		
+		File arquivos[] = new File(CAMINHO_PASTA_CANDIDATOS).listFiles();
+
+		Integer maiorNumeroEncontrado = 0;
+		for (File arquivo : arquivos) {
+			// Pega o nome do arquivo porque no próximo código ele será usado duas vezes
+			String nomeArquivo = arquivo.getName();
+			// Converte para inteiro
+			Integer novoNumero = Integer.parseInt(nomeArquivo.substring(0, nomeArquivo.indexOf("-")));
+			// Verifica se é o maior até o momento
+			if (novoNumero >= maiorNumeroEncontrado)
+				maiorNumeroEncontrado = novoNumero;
+		}
+		
+		return maiorNumeroEncontrado;
+	}
+
+	private String formataNomeParaArquivoDeCandidato(String nome) {
+        String nfdNormalizedString = Normalizer.normalize(nome, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(nfdNormalizedString).replaceAll("").toUpperCase();
+	}
 
 }
