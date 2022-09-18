@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
+import br.com.bluesoft.movimentocodar.io.VerificadorDoUltimoNumeroDeFormulario;
 import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
 import br.com.bluesoft.movimentocodar.util.FormatadorDeNomeParaArquivo;
 
@@ -54,7 +55,7 @@ public class MenuCandidatarSe implements Menu {
 	private void guardaCandidato() throws IOException {
 
 		String URL = CAMINHO_PASTA_CANDIDATOS
-				+ verificaUltimoNumeroDeFormularios() + "-" + FormatadorDeNomeParaArquivo.formata(perguntasERespostas.get(0).getResposta())
+				+ VerificadorDoUltimoNumeroDeFormulario.verifica(CAMINHO_PASTA_CANDIDATOS) + "-" + FormatadorDeNomeParaArquivo.formata(perguntasERespostas.get(0).getResposta())
 				+ "." + EXTENSAO_PADRAO;
 
 		BufferedWriter writer = new BufferedWriter(new FileWriter(URL));
@@ -67,32 +68,6 @@ public class MenuCandidatarSe implements Menu {
 		writer.close();
 		
 		System.out.println("--- Candidato " + perguntaRespostas.get(0).getResposta() + " salvo com Sucesso ---");
-	}
-
-	/**
-	 * O motivo de usar esse método toda vez que inicia um cadastro, o que é mais trabalhoso,
-	 * é porque tive a visão dele poder ser utilizado em várias máquinas que podem trabalhar
-	 * em um mesmo diretório de dados simultâneamente. Mas se for melhor posso mudar para um
-	 * simples contador
-	 * @return
-	 * @throws IOException
-	 */
-	private Integer verificaUltimoNumeroDeFormularios() throws IOException {
-		
-		File arquivos[] = new File(CAMINHO_PASTA_CANDIDATOS).listFiles();
-
-		Integer maiorNumeroEncontrado = 0;
-		for (File arquivo : arquivos) {
-			// Pega o nome do arquivo porque no próximo código ele será usado duas vezes
-			String nomeArquivo = arquivo.getName();
-			// Converte para inteiro
-			Integer novoNumero = Integer.parseInt(nomeArquivo.substring(0, nomeArquivo.indexOf("-")));
-			// Verifica se é o maior até o momento
-			if (novoNumero >= maiorNumeroEncontrado)
-				maiorNumeroEncontrado = novoNumero;
-		}
-		
-		return maiorNumeroEncontrado;
 	}
 
 }
