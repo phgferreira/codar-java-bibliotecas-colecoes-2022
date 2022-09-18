@@ -11,26 +11,24 @@ import java.util.Scanner;
 import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
 
 public class FormularioPerguntas {
-
-	public List<PerguntaResposta> getSomentePerguntasEmLista() throws FileNotFoundException {
-		Scanner scanner = new Scanner( new File("formulario.txt") );
+	
+	private Scanner scanner;
+	
+	public FormularioPerguntas() throws FileNotFoundException {
+		scanner = new Scanner( new File("formulario.txt") );
 		// Usa o '|' e a quebra de linha como delimitador
 		scanner.useDelimiter( "\\||" + System.lineSeparator() );
+	}
 
+	public List<PerguntaResposta> getSomentePerguntasEmLista() {
 		List<PerguntaResposta> perguntas = new ArrayList<>();
 		while (scanner.hasNext())
 			perguntas.add( new PerguntaResposta(scanner.next(), scanner.next()) );
 		
-		//scanner.close();
-
 		return perguntas;
 	}
 	
 	public Map<String, PerguntaResposta> getSomentePerguntasEmMapa() throws FileNotFoundException {
-		Scanner scanner = new Scanner( new File("formulario.txt") );
-		// Usa o '|' e a quebra de linha como delimitador
-		scanner.useDelimiter( "\\||" + System.lineSeparator() );
-
 		Map<String, PerguntaResposta> perguntas = new HashMap<>();
 		while (scanner.hasNext()) {
 			String idPergunta = scanner.next();
@@ -43,10 +41,7 @@ public class FormularioPerguntas {
 			perguntas.put(idPergunta, new PerguntaResposta(idPergunta, resposta));
 		}
 		
-		//scanner.close();
-
 		return perguntas;
 	}
 	
-
 }

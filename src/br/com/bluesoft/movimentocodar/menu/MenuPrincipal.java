@@ -1,5 +1,6 @@
 package br.com.bluesoft.movimentocodar.menu;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -29,13 +30,14 @@ public class MenuPrincipal implements Menu {
 			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice).getTitulo()) );
 		
 		try {
-			int escolha = InterfaceUsuario.pegaInteiroDoUsuario();
+			int escolha = new InterfaceUsuario().pegaRespostaEmInteiro();
 			opcoes.get(escolha).abreMenu();
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 			System.err.println("Escolha apenas as opções numéricas existentes no menu"
 					+ System.lineSeparator() 
 					+ "Por favor tente novamente");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 	}

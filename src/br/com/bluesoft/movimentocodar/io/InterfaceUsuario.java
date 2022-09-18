@@ -1,41 +1,31 @@
 package br.com.bluesoft.movimentocodar.io;
 
-import java.util.Scanner;
-
-import br.com.bluesoft.movimentocodar.excecao.SemRespostaException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class InterfaceUsuario {
 	
-	private static Scanner SCANNER = new Scanner(System.in);
-
-	private static void checaResposta() {
-		if (!SCANNER.hasNext())
-			throw new SemRespostaException("Sem resposta");
-	}
-
-	public static String pegaStringDoUsuario() {
-		checaResposta();
-		return SCANNER.next();
+	private BufferedReader reader;
+	
+	public InterfaceUsuario() {
+		reader = new BufferedReader( new InputStreamReader(System.in) );
 	}
 	
-	public static Integer pegaInteiroDoUsuario() {
-		checaResposta();
-		return SCANNER.nextInt();
+	public String pegaResposta() throws IOException {
+		return reader.readLine();
 	}
 	
-	public static String perguntaAoUsuarioPegaString(String texto) {
+	public Integer pegaRespostaEmInteiro() throws NumberFormatException, IOException {
+		return Integer.parseInt(reader.readLine());
+	}
+	
+	public String perguntaAoUsuario(String texto) throws IOException {
 		System.out.println(texto);
-		checaResposta();
-		return SCANNER.next();
+		return reader.readLine();
 	}
 
-	public static Integer perguntaAoUsuarioPegaInteiro(String texto) {
-		System.out.println(texto);
-		checaResposta();
-		return SCANNER.nextInt();
-	}
-
-	public static void close() {
-		SCANNER.close();
-	}
+//	public void close() {
+//		reader.close();
+//	}
 }

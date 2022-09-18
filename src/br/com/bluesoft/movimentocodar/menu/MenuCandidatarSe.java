@@ -40,7 +40,7 @@ public class MenuCandidatarSe implements Menu {
 	private void iniciaQuestionario() throws IOException, NumberFormatException, IdadeNaoPermitidaException {
 		for (String idPergunta : perguntasERespostas.keySet()) {
 			String pergunta = perguntasERespostas.get(idPergunta).getPergunta();
-			String resposta = InterfaceUsuario.perguntaAoUsuarioPegaString(pergunta);
+			String resposta = new InterfaceUsuario().perguntaAoUsuario(pergunta);
 			perguntasERespostas.get(idPergunta).setResposta(resposta);
 		}
 	}
