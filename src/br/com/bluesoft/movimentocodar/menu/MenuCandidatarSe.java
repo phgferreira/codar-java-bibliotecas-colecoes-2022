@@ -1,10 +1,11 @@
 package br.com.bluesoft.movimentocodar.menu;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
-import java.util.Scanner;
 
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
@@ -38,17 +39,17 @@ public class MenuCandidatarSe implements Menu {
 	
 	
 	private void iniciaQuestionario() throws IOException, NumberFormatException, IdadeNaoPermitidaException {
-		Scanner scanner = new Scanner(System.in);
+		BufferedReader reader = new BufferedReader( new InputStreamReader(System.in) );
 		
 		/* Até pensei em usar o lambda mas o IOException do scanner.next precisa ser tratado
 		 * dentro no lambda e eu quero que seja tratado fora
 		 */
 		for (PerguntaResposta perguntaEResposta : perguntasERespostas) {
 			System.out.println(perguntaEResposta.getPergunta());
-			perguntaEResposta.setResposta(scanner.next());
+			perguntaEResposta.setResposta(reader.readLine());
 		}
 		
-		scanner.close();
+		reader.close();
 	}
 	
 	private void guardaCandidato() throws IOException {
