@@ -8,8 +8,9 @@ public class PerguntaComResposta {
 	private Pergunta pergunta;
 	private String resposta;
 
-	public PerguntaComResposta(Pergunta pergunta) {
+	public PerguntaComResposta(Pergunta pergunta, String resposta) throws NumberFormatException, IdadeNaoPermitidaException {
 		this.pergunta = pergunta;
+		this.setResposta(resposta);
 	}
 	
 	public Pergunta getPergunta() {
