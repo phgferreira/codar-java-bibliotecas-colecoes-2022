@@ -37,11 +37,11 @@ public class MenuCandidatarSe implements Menu {
 	}
 	
 	
-	private String iniciaQuestionario() throws IOException, NumberFormatException, IdadeNaoPermitidaException {
+	private void iniciaQuestionario() throws IOException, NumberFormatException, IdadeNaoPermitidaException {
 		Scanner scanner = new Scanner(System.in);
 		
 		/* Até pensei em usar o lambda mas o IOException do scanner.next precisa ser tratado
-		 * dentro do lambda e eu quero que seja tratado fora
+		 * dentro no lambda e eu quero que seja tratado fora
 		 */
 		for (PerguntaResposta perguntaEResposta : perguntasERespostas) {
 			System.out.println(perguntaEResposta.getPergunta());
