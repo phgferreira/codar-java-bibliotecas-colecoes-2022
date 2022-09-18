@@ -34,7 +34,13 @@ public class FormularioPerguntas {
 		Map<String, PerguntaResposta> perguntas = new HashMap<>();
 		while (scanner.hasNext()) {
 			String idPergunta = scanner.next();
-			perguntas.put(scanner.next(), new PerguntaResposta(idPergunta, scanner.next()));
+			String resposta = scanner.next();
+			/*
+			 *  O idPergunta é inserido no mapa para facilitar trabalharmos com localização
+			 *  de perguntas específicas dentro da coleção e também é inserido na classe PerguntaResposta
+			 *  porque poderemos tratar respostas de perguntas específicas, como a idade, por exemplo.
+			 */
+			perguntas.put(idPergunta, new PerguntaResposta(idPergunta, resposta));
 		}
 		
 		scanner.close();
