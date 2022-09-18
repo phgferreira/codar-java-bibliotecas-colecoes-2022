@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.modelo.PerguntaResposta;
+import br.com.bluesoft.movimentocodar.util.FormatadorDeNomeParaArquivo;
 
 public class MenuCandidatarSe implements Menu {
 	
@@ -52,7 +53,7 @@ public class MenuCandidatarSe implements Menu {
 	private void guardaCandidato() throws IOException {
 
 		String URL = CAMINHO_PASTA_CANDIDATOS
-				+ verificaUltimoNumeroDeFormularios() + "-" + formataNomeParaArquivo(perguntasERespostas.get(0).getResposta())
+				+ verificaUltimoNumeroDeFormularios() + "-" + FormatadorDeNomeParaArquivo.formata(perguntasERespostas.get(0).getResposta())
 				+ "." + EXTENSAO_PADRAO;
 
 		BufferedWriter writer = new BufferedWriter(new FileWriter(URL));
@@ -91,12 +92,6 @@ public class MenuCandidatarSe implements Menu {
 		}
 		
 		return maiorNumeroEncontrado;
-	}
-
-	private String formataNomeParaArquivoDeCandidato(String nome) {
-        String nfdNormalizedString = Normalizer.normalize(nome, Normalizer.Form.NFD);
-        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-        return pattern.matcher(nfdNormalizedString).replaceAll("").toUpperCase();
 	}
 
 }
