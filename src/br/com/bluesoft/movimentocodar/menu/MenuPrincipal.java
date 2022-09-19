@@ -30,8 +30,8 @@ public class MenuPrincipal extends Menu {
 				new MenuAdicionarPergunta(interfaceUsuario, formularioPerguntas),
 				new MenuRemoverFormulario(interfaceUsuario, formularioPerguntas),
 				new MenuListarFormularios(interfaceUsuario),
+				new MenuValidarFormularios(interfaceUsuario),
 //				new MenuPesquisarFormularios(interfaceUsuario),
-//				new MenuValidarFormularios(interfaceUsuario),
 				new MenuSair(interfaceUsuario)
 			);
 		IntStream.range(0, opcoes.size())

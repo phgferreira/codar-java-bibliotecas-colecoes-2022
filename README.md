@@ -24,7 +24,7 @@ Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movi
     - [x] listar nomes agrupados por idade;
     - [x] listar quantidade de candidatos por idade;
 - Menu Validar Formulários:
-  - [ ] Procurar formulários duplicados e exibir em tela;
+  - [x] Procurar formulários duplicados e exibir em tela;
   - [ ] (Opcional) Pergunta se deseja remover duplicidade escolhendo um cadastro para ser mantido.
 - Menu Pesquisar Formulários Cadastrados:
   - [ ] Recebe opção de consulta (nome ou email);

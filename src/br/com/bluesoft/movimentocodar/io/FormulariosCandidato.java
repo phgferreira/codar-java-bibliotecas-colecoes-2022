@@ -72,7 +72,33 @@ public class FormulariosCandidato {
 
 	}
 	
-	public void listarQuantidadePorIdade() {
-		
+	public Set<String> getFormulariosDuplicados() throws IOException {
+		File arquivos[] = new File(CAMINHO_PASTA_CANDIDATOS).listFiles();
+		Set<String> candidatos = new HashSet<>();
+		Set<String> duplicados = new HashSet<>();
+
+		for (File arquivo : arquivos) {
+			BufferedReader reader = new BufferedReader( new FileReader(arquivo));
+			
+			String nome = "", email = "";
+			for (String linha = reader.readLine(); linha!=null; linha = reader.readLine()) {
+				String valores[] = linha.split("\\|");
+				if (valores[0].equals("P1"))
+					nome = valores[2];
+				if (valores[0].equals("P2"))
+					email = valores[2];
+				
+			}
+
+			if (candidatos.contains(nome+"|"+email))
+				duplicados.add(nome+"|"+email);
+			else
+				candidatos.add(nome+"|"+email);
+			
+			reader.close();
+		}
+
+		return duplicados;
+
 	}
 }
