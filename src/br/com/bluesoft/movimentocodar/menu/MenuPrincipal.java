@@ -29,7 +29,7 @@ public class MenuPrincipal extends Menu {
 				new MenuCandidatarSe(interfaceUsuario, formularioPerguntas),
 				new MenuAdicionarPergunta(interfaceUsuario, formularioPerguntas),
 				new MenuRemoverFormulario(interfaceUsuario, formularioPerguntas),
-//				new MenuListarFormularios(interfaceUsuario),
+				new MenuListarFormularios(interfaceUsuario),
 //				new MenuPesquisarFormularios(interfaceUsuario),
 //				new MenuValidarFormularios(interfaceUsuario),
 				new MenuSair(interfaceUsuario)
