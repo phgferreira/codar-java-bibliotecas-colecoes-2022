@@ -6,6 +6,10 @@ public abstract class Menu {
 	
 	protected InterfaceUsuario interfaceUsuario;
 	
+	public Menu() {
+		
+	}
+	
 	public Menu(InterfaceUsuario interfaceUsuario) {
 		this.interfaceUsuario = interfaceUsuario;
 	}
