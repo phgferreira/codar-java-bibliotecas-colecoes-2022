@@ -39,7 +39,7 @@ public class FormulariosCandidato {
 		System.out.println("--- Candidato " + perguntaComResposta.get("P1").getResposta() + " salvo com Sucesso ---");
 	}
 	
-	public void listarNomesPorIdade() throws IOException {
+	public Map<Integer, Set<String>> listarNomesPorIdade() throws IOException {
 		File arquivos[] = new File(CAMINHO_PASTA_CANDIDATOS).listFiles();
 		Map<Integer, Set<String>> nomesPorIdade = new HashMap<>();
 
@@ -67,12 +67,12 @@ public class FormulariosCandidato {
 			
 			reader.close();
 		}
-
-		nomesPorIdade.forEach( (idade2, nomes) -> {
-			System.out.println("### Idade " + idade2 + " ###");
-			nomes.forEach( (nome2) -> System.out.println(nome2) );
-		});
 		
+		return nomesPorIdade;
+
+	}
+	
+	public void listarQuantidadePorIdade() {
 		
 	}
 }
