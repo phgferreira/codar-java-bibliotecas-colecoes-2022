@@ -30,13 +30,13 @@ public class MenuCandidatarSe extends Menu {
 	@Override
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
-		try {
-			List<Pergunta> perguntas = formularioPerguntas.getPerguntasEmLista();
-			iniciaQuestionario(perguntas);
-			new FormulariosCandidato().guardaNovoCandidato(perguntaComResposta);
-		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {
-			System.err.println(e.getMessage());
-		}
+//		try {
+//			List<Pergunta> perguntas = formularioPerguntas.getPerguntasEmLista();
+//			iniciaQuestionario(perguntas);
+//			new FormulariosCandidato().guardaNovoCandidato(perguntaComResposta);
+//		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {
+//			System.err.println(e.getMessage());
+//		}
 	}
 	
 	

@@ -21,15 +21,15 @@ public class MenuValidarFormularios extends Menu {
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
 		
-		try {
-			Set<String> duplicados = new FormulariosCandidato().getFormulariosDuplicados();
-			duplicados.forEach( nomeEmail -> {
-				String valores[] = nomeEmail.split("\\|");
-				System.out.println(valores[0] + " (" + valores[1] + ")");
-			});
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			Set<String> duplicados = new FormulariosCandidato().getFormulariosDuplicados();
+//			duplicados.forEach( nomeEmail -> {
+//				String valores[] = nomeEmail.split("\\|");
+//				System.out.println(valores[0] + " (" + valores[1] + ")");
+//			});
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 }

@@ -26,22 +26,21 @@ public class MenuAdicionarPergunta extends Menu {
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
 		
-		
-		try {
-			String novaPergunta = interfaceUsuario.perguntaAoUsuario("Qual pergunta gostaria de adicionar ao formulário?");
-			
-			List<Pergunta> perguntas = formularioPerguntas.getPerguntasEmLista();
-			
-			if (perguntas.contains(new Pergunta(novaPergunta)))
-				throw new PerguntaRepetidaException("A pergunta '" + novaPergunta + "' já foi cadastrada");
-			else
-				guardaNovaPergunta(novaPergunta, perguntas);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (PerguntaRepetidaException e) {
-			System.err.println(e.getMessage());
-		}
+//		try {
+//			String novaPergunta = interfaceUsuario.perguntaAoUsuario("Qual pergunta gostaria de adicionar ao formulário?");
+//			
+//			List<Pergunta> perguntas = formularioPerguntas.getPerguntasEmLista();
+//			
+//			if (perguntas.contains(new Pergunta(novaPergunta)))
+//				throw new PerguntaRepetidaException("A pergunta '" + novaPergunta + "' já foi cadastrada");
+//			else
+//				guardaNovaPergunta(novaPergunta, perguntas);
+//			
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		} catch (PerguntaRepetidaException e) {
+//			System.err.println(e.getMessage());
+//		}
 	}
 
 	private void guardaNovaPergunta(String novaPergunta, List<Pergunta> perguntas) throws IOException {
