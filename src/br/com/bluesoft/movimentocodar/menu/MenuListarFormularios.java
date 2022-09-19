@@ -2,6 +2,7 @@ package br.com.bluesoft.movimentocodar.menu;
 
 import java.io.IOException;
 
+import br.com.bluesoft.movimentocodar.io.FormulariosCandidato;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 
 public class MenuListarFormularios extends Menu {
@@ -24,6 +25,8 @@ public class MenuListarFormularios extends Menu {
 					"1. Nomes agrupados por idade" + System.lineSeparator() 
 					+ "2. Quantidade por idade" + System.lineSeparator() 
 					+ "Qual das formas acima deseja visualizar a lista?"));
+			if (opcao == 1)
+				new FormulariosCandidato().listarNomesPorIdade();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
