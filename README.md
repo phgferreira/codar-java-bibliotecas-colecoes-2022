@@ -20,7 +20,7 @@ Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movi
   - [x] Receber indentificador da pergunta que deve ser removida do formulario.txt;
   - [x] Impedir remoção das perguntas 1 a 4.
 - Menu Listar Formulários Cadastrados:
-  - [ ] Receber opção de submenu:
+  - [x] Receber opção de submenu:
     - [x] listar nomes agrupados por idade;
     - [ ] listar quantidade de candidatos por idade;
 - Menu Validar Formulários:

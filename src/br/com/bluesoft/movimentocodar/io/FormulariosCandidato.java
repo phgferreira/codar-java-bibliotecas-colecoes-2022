@@ -65,13 +65,13 @@ public class FormulariosCandidato {
 			// Adiciona o nome na coleção da idade específica
 			nomesPorIdade.get(idade).add(nome);
 			
-			nomesPorIdade.forEach( (idade2, nomes) -> {
-				nomes.forEach( (nome2) -> System.out.println(idade2 + ": " + nome2) );
-			});
-			
 			reader.close();
-			
 		}
+
+		nomesPorIdade.forEach( (idade2, nomes) -> {
+			System.out.println("### Idade " + idade2 + " ###");
+			nomes.forEach( (nome2) -> System.out.println(nome2) );
+		});
 		
 		
 	}
