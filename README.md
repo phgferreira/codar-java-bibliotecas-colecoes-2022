@@ -27,8 +27,8 @@ Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movi
   - [x] Procurar formulários duplicados e exibir em tela;
   - [ ] (Opcional) Pergunta se deseja remover duplicidade escolhendo um cadastro para ser mantido.
 - Menu Pesquisar Formulários Cadastrados:
-  - [ ] Recebe opção de consulta (nome ou email);
-  - [ ] Procura formulários e exibe em tela;
+  - [x] Recebe opção de consulta (nome ou email);
+  - [x] Procura formulários e exibe em tela;
   - [ ] (Opcional) Permite escolher mais opções de consulta.
 
 ---

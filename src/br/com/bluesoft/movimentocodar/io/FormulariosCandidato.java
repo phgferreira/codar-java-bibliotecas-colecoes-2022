@@ -101,4 +101,29 @@ public class FormulariosCandidato {
 		return duplicados;
 
 	}
+
+	public boolean procuraCandidato(String nome, String email) throws IOException {
+		File arquivos[] = new File(CAMINHO_PASTA_CANDIDATOS).listFiles();
+		for (File arquivo : arquivos) {
+			BufferedReader reader = new BufferedReader( new FileReader(arquivo));
+			
+			String outroNome = "";
+			String outroEmail = "";
+			for (String linha = reader.readLine(); linha!=null; linha = reader.readLine()) {
+				String valores[] = linha.split("\\|");
+				if (valores[0].equals("P1"))
+					outroNome = valores[2];
+				if (valores[0].equals("P2"))
+					outroEmail = valores[2];
+			}
+			
+			if ((nome+email).equals(outroNome+outroEmail)) {
+				reader.close();
+				return true;
+			}
+			reader.close();
+		}
+		
+		return false;
+	}
 }
