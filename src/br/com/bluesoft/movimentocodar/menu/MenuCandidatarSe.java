@@ -32,7 +32,8 @@ public class MenuCandidatarSe extends Menu {
 			List<Pergunta> perguntas = new FormularioPerguntas().getPerguntasEmLista();
 			iniciaQuestionario(perguntas);
 			new FormulariosCandidato().guardaNovoCandidato(perguntaComResposta);
-		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {
+		} catch ( RuntimeException | IOException | IdadeNaoPermitidaException e) {
+			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
 	}
