@@ -26,7 +26,7 @@ public class MenuPrincipal extends Menu {
 	public void abreMenu() {
 		System.out.println("### " + this.getTitulo() + " ###");
 		List<Menu> opcoes = Arrays.asList(
-				new MenuCandidatarSe(interfaceUsuario, formularioPerguntas),
+				new MenuCandidatarSe(interfaceUsuario),
 				new MenuAdicionarPergunta(interfaceUsuario, formularioPerguntas),
 				new MenuRemoverFormulario(interfaceUsuario, formularioPerguntas),
 				new MenuListarFormularios(interfaceUsuario),

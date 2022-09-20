@@ -14,12 +14,10 @@ import br.com.bluesoft.movimentocodar.modelo.PerguntaComResposta;
 
 public class MenuCandidatarSe extends Menu {
 	
-	private FormularioPerguntas formularioPerguntas;
 	private Map<String, PerguntaComResposta> perguntaComResposta = new HashMap<>();
 	
-	public MenuCandidatarSe(InterfaceUsuario interfaceUsuario, FormularioPerguntas formularioPerguntas) {
+	public MenuCandidatarSe(InterfaceUsuario interfaceUsuario) {
 		super(interfaceUsuario);
-		this.formularioPerguntas = formularioPerguntas;
 	}
 
 	@Override
@@ -30,13 +28,13 @@ public class MenuCandidatarSe extends Menu {
 	@Override
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
-//		try {
-//			List<Pergunta> perguntas = formularioPerguntas.getPerguntasEmLista();
-//			iniciaQuestionario(perguntas);
-//			new FormulariosCandidato().guardaNovoCandidato(perguntaComResposta);
-//		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {
-//			System.err.println(e.getMessage());
-//		}
+		try {
+			List<Pergunta> perguntas = new FormularioPerguntas().getPerguntasEmLista();
+			iniciaQuestionario(perguntas);
+			new FormulariosCandidato().guardaNovoCandidato(perguntaComResposta);
+		} catch (IOException | NumberFormatException | IdadeNaoPermitidaException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 	
 	
