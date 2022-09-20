@@ -2,7 +2,6 @@ package br.com.bluesoft.movimentocodar.io;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.Optional;
 
 public class VerificadorNumeroArquivos {
 	
