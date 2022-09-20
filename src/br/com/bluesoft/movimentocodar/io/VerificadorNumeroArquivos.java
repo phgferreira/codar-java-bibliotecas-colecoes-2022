@@ -10,7 +10,7 @@ public class VerificadorNumeroArquivos {
 
 	public static Integer getUltimoNumero(String caminhoFormularios) {
 		verificaUltimoNumero(caminhoFormularios);
-		return ULTIMO_NUMERO;
+		return ULTIMO_NUMERO++;
 	}
 	
 	private static void verificaUltimoNumero(String caminhoFormularios) {
