@@ -20,9 +20,9 @@ public class FormulariosCandidato {
 	private static final String EXTENSAO_PADRAO = "txt";
 
 	public void guardaNovoCandidato(Map<String, PerguntaComResposta> perguntaComResposta) throws IOException {
-
+		
 		String URL = CAMINHO_PASTA_CANDIDATOS
-				+ new VerificadorDoUltimoNumeroDeFormulario().verifica(CAMINHO_PASTA_CANDIDATOS)
+				+ VerificadorNumeroArquivos.getUltimoNumero(CAMINHO_PASTA_CANDIDATOS)
 				+ "-" + new FormatadorDeNomeParaArquivo().formata(perguntaComResposta.get("P1").getResposta())
 				+ "." + EXTENSAO_PADRAO;
 
