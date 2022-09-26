@@ -1,9 +1,8 @@
-# Desafio 04: java-bibliotecas-colecoes-2022
-Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movimento Codar 2022
+# Desafio 04 e 05: Coleções e TDD
 
 >Status: Em Desenvolvimeto
 
-## Execução do desafio
+## Execução do desafio 04 (Coleções)
 - Menu Principal:
   - [x] Acessar os menus
 - Menu Candidatar-se:
@@ -31,7 +30,14 @@ Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movi
   - [x] Procura formulários e exibe em tela;
   - [ ] (Opcional) Permite escolher mais opções de consulta.
 
+## Execução do desafio 05 (TDD)
+
+Como está um pouco abstrato quais funcionalidades eu realmente devo testar e como eu farei os testes, além da preocupação com o tempo do desafio, não vou listar as metas mas vou listar os testes construídos e o que foi feito como consequência da refatoraçaõ do código.
+
+
 ---
+# Desafio 04: java-bibliotecas-colecoes-2022
+Conteúdo e desafio do módulo Back-end - Java: bibliotecas e coleções do Movimento Codar 2022
 
 ## Desafio
 
