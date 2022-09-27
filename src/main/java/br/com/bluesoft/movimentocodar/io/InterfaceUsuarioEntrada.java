@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class InterfaceUsuario {
+public class InterfaceUsuarioEntrada {
 	
 	private BufferedReader reader;
 	
-	public InterfaceUsuario() {
+	public InterfaceUsuarioEntrada() {
 		reader = new BufferedReader( new InputStreamReader( System.in ));
 	}
 	

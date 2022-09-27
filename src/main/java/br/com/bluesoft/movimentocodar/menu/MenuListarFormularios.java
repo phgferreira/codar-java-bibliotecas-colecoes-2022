@@ -5,12 +5,12 @@ import java.util.Map;
 import java.util.Set;
 
 import br.com.bluesoft.movimentocodar.io.FormulariosCandidato;
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
 
 public class MenuListarFormularios extends Menu {
 
-	public MenuListarFormularios(InterfaceUsuario interfaceUsuario) {
-		super(interfaceUsuario);
+	public MenuListarFormularios(InterfaceUsuarioEntrada interfaceUsuarioEntrada) {
+		super(interfaceUsuarioEntrada);
 	}
 
 	@Override

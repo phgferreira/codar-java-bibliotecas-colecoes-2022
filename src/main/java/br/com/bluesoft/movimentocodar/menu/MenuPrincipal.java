@@ -1,27 +1,19 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.InputMismatchException;
 
-import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioSaida;
+import br.com.bluesoft.movimentocodar.util.OpcoesMenuPrincipal;
 
 public class MenuPrincipal extends Menu {
 	
-	private FormularioPerguntas formularioPerguntas;
+	private OpcoesMenuPrincipal opcoes;
 
-	public MenuPrincipal(InterfaceUsuario interfaceUsuario) {
-		super(interfaceUsuario);
-		
-		// Esse trecho é temporário
-		try {
-			this.formularioPerguntas = new FormularioPerguntas();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+	public MenuPrincipal(InterfaceUsuarioEntrada entrada, InterfaceUsuarioSaida saida, OpcoesMenuPrincipal opcoes) {
+		super(entrada, saida);
+		this.opcoes = opcoes;
 	}
 
 	@Override
@@ -31,29 +23,18 @@ public class MenuPrincipal extends Menu {
 
 	@Override
 	public void abreMenu() {
-		System.out.println("### " + this.getTitulo() + " ###");
-		List<Menu> opcoes = Arrays.asList(
-				new MenuCandidatarSe(interfaceUsuario),
-				new MenuAdicionarPergunta(interfaceUsuario, formularioPerguntas),
-				new MenuRemoverFormulario(interfaceUsuario, formularioPerguntas),
-				new MenuListarFormularios(interfaceUsuario),
-				new MenuValidarFormularios(interfaceUsuario),
-				new MenuPesquisarFormularios(interfaceUsuario),
-				new MenuSair(interfaceUsuario)
-			);
-		IntStream.range(0, opcoes.size())
-			.forEach( indice -> System.out.println(indice + " - " + opcoes.get(indice).getTitulo()) );
-		
+		saida.exibeMensagem("### " + this.getTitulo() + " ###");
+		saida.exibeOpcoesDeMenu(opcoes.getOpcoes());
+
 		try {
-			int escolha = interfaceUsuario.pegaRespostaEmInteiro();
-			opcoes.get(escolha).abreMenu();
-		} catch (RuntimeException e) {
+			int escolha = entrada.getRespostaEmInteiro();
+			opcoes.getOpcao(escolha).abreMenu();
+		} catch (IndexOutOfBoundsException | InputMismatchException | NumberFormatException | IOException e) {
 			System.err.println("Escolha apenas as opções numéricas existentes no menu"
-					+ System.lineSeparator() 
+					+ System.lineSeparator()
 					+ "Por favor tente novamente");
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		
 	}
+	
 }

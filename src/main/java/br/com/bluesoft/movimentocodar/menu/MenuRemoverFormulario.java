@@ -7,15 +7,15 @@ import java.util.Map;
 
 import br.com.bluesoft.movimentocodar.excecao.PerguntaImpedidaDeSerRemovidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
 import br.com.bluesoft.movimentocodar.modelo.Pergunta;
 
 public class MenuRemoverFormulario extends Menu {
 
 	private FormularioPerguntas formularioPerguntas;
 	
-	public MenuRemoverFormulario(InterfaceUsuario interfaceUsuario, FormularioPerguntas formularioPerguntas) {
-		super(interfaceUsuario);
+	public MenuRemoverFormulario(InterfaceUsuarioEntrada interfaceUsuarioEntrada, FormularioPerguntas formularioPerguntas) {
+		super(interfaceUsuarioEntrada);
 		this.formularioPerguntas = formularioPerguntas;
 	}
 

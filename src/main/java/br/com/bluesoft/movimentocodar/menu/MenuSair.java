@@ -2,12 +2,13 @@ package br.com.bluesoft.movimentocodar.menu;
 
 import java.io.IOException;
 
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioSaida;
 
 public class MenuSair extends Menu {
 	
-	public MenuSair(InterfaceUsuario interfaceUsuario) {
-		super(interfaceUsuario);
+	public MenuSair(InterfaceUsuarioEntrada entrada, InterfaceUsuarioSaida saida) {
+		super(entrada, saida);
 	}
 
 	@Override
@@ -18,12 +19,12 @@ public class MenuSair extends Menu {
 	@Override
 	public void abreMenu() {
 		try {
-			interfaceUsuario.close();
+			entrada.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Volte Sempre! :)");
+		saida.exibeMensagem("Volte Sempre! :)");
 		
 		// Termina a aplicação com sucesso
 		System.exit(0);

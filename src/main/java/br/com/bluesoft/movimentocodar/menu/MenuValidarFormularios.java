@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.Set;
 
 import br.com.bluesoft.movimentocodar.io.FormulariosCandidato;
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
 
 public class MenuValidarFormularios extends Menu {
 
-	public MenuValidarFormularios(InterfaceUsuario interfaceUsuario) {
-		super(interfaceUsuario);
+	public MenuValidarFormularios(InterfaceUsuarioEntrada interfaceUsuarioEntrada) {
+		super(interfaceUsuarioEntrada);
 	}
 
 	@Override

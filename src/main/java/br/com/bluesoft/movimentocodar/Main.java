@@ -1,7 +1,9 @@
 package br.com.bluesoft.movimentocodar;
 
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioSaida;
 import br.com.bluesoft.movimentocodar.menu.MenuPrincipal;
+import br.com.bluesoft.movimentocodar.util.OpcoesMenuPrincipal;
 
 public class Main {
 
@@ -12,10 +14,11 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// O interfaceUsuario estou instanciando logo no início porque ele só pode ser fechado no final do aplicativo
-		InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
+		InterfaceUsuarioEntrada entrada = new InterfaceUsuarioEntrada();
 
 		while(true) {
-			new MenuPrincipal(interfaceUsuario).abreMenu();
+			MenuPrincipal menu = new MenuPrincipal(entrada, new InterfaceUsuarioSaida(), new OpcoesMenuPrincipal(entrada, new InterfaceUsuarioSaida()));
+			menu.abreMenu();
 		}
 	}
 

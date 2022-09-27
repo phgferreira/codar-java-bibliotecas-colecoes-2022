@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
 
 class MainTest {
 	
@@ -16,7 +16,7 @@ class MainTest {
 	@Test
 	void deveInstanciarUmaInterfaceComOUsuario() {
 		try {
-			new InterfaceUsuario();
+			new InterfaceUsuarioEntrada();
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage());

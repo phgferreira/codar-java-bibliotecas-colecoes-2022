@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import br.com.bluesoft.movimentocodar.io.FormulariosCandidato;
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
 
 public class MenuPesquisarFormularios extends Menu {
 
-	public MenuPesquisarFormularios(InterfaceUsuario interfaceUsuario) {
-		super(interfaceUsuario);
+	public MenuPesquisarFormularios(InterfaceUsuarioEntrada interfaceUsuarioEntrada) {
+		super(interfaceUsuarioEntrada);
 	}
 
 	@Override
