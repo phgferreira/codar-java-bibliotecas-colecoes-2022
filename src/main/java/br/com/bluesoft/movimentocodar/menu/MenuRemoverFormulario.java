@@ -1,22 +1,16 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
+import java.io.FileNotFoundException;
 
-import br.com.bluesoft.movimentocodar.excecao.PerguntaImpedidaDeSerRemovidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
-import br.com.bluesoft.movimentocodar.modelo.Pergunta;
 
 public class MenuRemoverFormulario extends Menu {
 
 	private FormularioPerguntas formularioPerguntas;
 	
-	public MenuRemoverFormulario(InterfaceUsuario interfaceUsuario, FormularioPerguntas formularioPerguntas) {
+	public MenuRemoverFormulario(InterfaceUsuario interfaceUsuario) {
 		super(interfaceUsuario);
-		this.formularioPerguntas = formularioPerguntas;
 	}
 
 	@Override
@@ -27,6 +21,13 @@ public class MenuRemoverFormulario extends Menu {
 	@Override
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
+		
+		try {
+			formularioPerguntas = new FormularioPerguntas();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 //		try {
 //			Map<String, Pergunta> perguntas = formularioPerguntas.getPerguntasEmMapa();

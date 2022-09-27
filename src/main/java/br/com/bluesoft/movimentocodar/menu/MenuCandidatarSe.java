@@ -41,7 +41,7 @@ public class MenuCandidatarSe extends Menu {
 	
 	private void iniciaQuestionario(List<Pergunta> perguntas) throws IOException, NumberFormatException, IdadeNaoPermitidaException {
 		for (Pergunta pergunta : perguntas) {
-			String resposta = interfaceUsuarioEntrada.perguntaAoUsuario(pergunta.getPergunta());
+			String resposta = interfaceUsuario.perguntaAoUsuario(pergunta.getPergunta());
 			perguntaComResposta.put(pergunta.getId(), new PerguntaComResposta(pergunta, resposta));
 		}
 	}

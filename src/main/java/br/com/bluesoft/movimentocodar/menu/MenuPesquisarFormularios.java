@@ -1,11 +1,5 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.IntStream;
-
-import br.com.bluesoft.movimentocodar.io.FormulariosCandidato;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 
 public class MenuPesquisarFormularios extends Menu {

@@ -1,9 +1,5 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-import java.io.IOException;
-import java.util.Set;
-
-import br.com.bluesoft.movimentocodar.io.FormulariosCandidato;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 
 public class MenuValidarFormularios extends Menu {

@@ -1,9 +1,9 @@
 package br.com.bluesoft.movimentocodar.menu;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-import br.com.bluesoft.movimentocodar.excecao.PerguntaRepetidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 import br.com.bluesoft.movimentocodar.modelo.Pergunta;
@@ -12,9 +12,8 @@ public class MenuAdicionarPergunta extends Menu {
 	
 	private FormularioPerguntas formularioPerguntas;
 
-	public MenuAdicionarPergunta(InterfaceUsuario interfaceUsuario, FormularioPerguntas formularioPerguntas) {
+	public MenuAdicionarPergunta(InterfaceUsuario interfaceUsuario) {
 		super(interfaceUsuario);
-		this.formularioPerguntas = formularioPerguntas;
 	}
 
 	@Override
@@ -25,6 +24,13 @@ public class MenuAdicionarPergunta extends Menu {
 	@Override
 	public void abreMenu() {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
+		
+		try {
+			formularioPerguntas = new FormularioPerguntas();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 //		try {
 //			String novaPergunta = interfaceUsuario.perguntaAoUsuario("Qual pergunta gostaria de adicionar ao formulário?");
