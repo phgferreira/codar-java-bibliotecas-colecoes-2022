@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
@@ -48,4 +49,23 @@ class FormularioPerguntasTest {
 		
 	}
 
+	void devePegarAsPerguntasDoFormularioEmMapa() {
+		try {
+			FormularioPerguntas formularioPerguntas = new FormularioPerguntas();
+			
+			Map<String, Pergunta> perguntas = formularioPerguntas.getPerguntasEmMapa();
+			
+			if (perguntas.isEmpty())
+				throw new IllegalStateException("Lista de perguntas está vazia");
+			
+			assertEquals("Qual o seu nome completo?", perguntas.get("P1").getPergunta());
+			assertEquals("Qual seu e-mail?", perguntas.get("P2").getPergunta());
+			assertEquals("Qual sua idade?", perguntas.get("P3").getPergunta());
+			assertEquals("Qual seu whatsapp ou celular?", perguntas.get("P4").getPergunta());
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+		
+	}	
 }
