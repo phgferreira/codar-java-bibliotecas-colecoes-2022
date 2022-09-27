@@ -16,7 +16,7 @@ public class Main {
 		InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
 
 		while(true) {
-			MenuPrincipal menu = new MenuPrincipal(interfaceUsuario, new OpcoesSubmenu(interfaceUsuario).getOpcoes());
+			MenuPrincipal menu = new MenuPrincipal(interfaceUsuario, new OpcoesSubmenu(interfaceUsuario).getOpcoesMenuPrincipal());
 			menu.abreMenu();
 		}
 	}

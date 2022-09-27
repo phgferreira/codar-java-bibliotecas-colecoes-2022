@@ -23,7 +23,7 @@ public class OpcoesSubmenu {
 
 	}
 
-	public List<Menu> getOpcoes() {
+	public List<Menu> getOpcoesMenuPrincipal() {
 		List<Menu> opcoes = Arrays.asList(
 				new MenuCandidatarSe(interfaceUsuario),
 				new MenuAdicionarPergunta(interfaceUsuario),
