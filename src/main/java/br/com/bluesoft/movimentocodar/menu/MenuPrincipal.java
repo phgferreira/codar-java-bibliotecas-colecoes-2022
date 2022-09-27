@@ -11,8 +11,8 @@ public class MenuPrincipal extends Menu {
 	
 	private List<Menu> opcoesSubmenu;
 	
-	public MenuPrincipal(InterfaceUsuario entrada, List<Menu> opcoesSubmenu) {
-		super(entrada);
+	public MenuPrincipal(InterfaceUsuario interfaceUsuario, List<Menu> opcoesSubmenu) {
+		super(interfaceUsuario);
 		this.opcoesSubmenu = opcoesSubmenu;
 	}
 
