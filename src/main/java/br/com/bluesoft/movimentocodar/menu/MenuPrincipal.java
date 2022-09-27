@@ -1,5 +1,6 @@
 package br.com.bluesoft.movimentocodar.menu;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -12,9 +13,15 @@ public class MenuPrincipal extends Menu {
 	
 	private FormularioPerguntas formularioPerguntas;
 
-	public MenuPrincipal(InterfaceUsuario interfaceUsuario, FormularioPerguntas formularioPerguntas) {
+	public MenuPrincipal(InterfaceUsuario interfaceUsuario) {
 		super(interfaceUsuario);
-		this.formularioPerguntas = formularioPerguntas;
+		
+		// Esse trecho é temporário
+		try {
+			this.formularioPerguntas = new FormularioPerguntas();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

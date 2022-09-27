@@ -1,19 +1,21 @@
 package br.com.bluesoft.movimentocodar;
 
-import java.io.IOException;
-
-import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 import br.com.bluesoft.movimentocodar.menu.MenuPrincipal;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
+	/**
+	 * O método main será responsável apenas por garantir a continuidade do sistema
+	 * por meio de um loop infinito.
+	 * O loop é interrompido no MenuSair.
+	 */
+	public static void main(String[] args) {
+		// O interfaceUsuario estou instanciando logo no início porque ele só pode ser fechado no final do aplicativo
 		InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
-		FormularioPerguntas formularioPerguntas = new FormularioPerguntas();
+
 		while(true) {
-			new MenuPrincipal(interfaceUsuario, formularioPerguntas).abreMenu();
-			System.out.println("--- Volta ao MenuPrincipal ---");
+			new MenuPrincipal(interfaceUsuario).abreMenu();
 		}
 	}
 
