@@ -29,7 +29,7 @@ public class FormularioPerguntas {
 		BufferedReader reader = new BufferedReader( new FileReader(arquivo) );
 
 		for (String linha = reader.readLine(); linha != null; linha = reader.readLine()) {
-			String valores[] = DivisorDeLinha.getValoresDividios(linha);
+			String valores[] = new DivisorDeLinha().getValoresDividios(linha);
 			// valores[0] = idPergunta; valores[1] = descriçãoPergunta
 			perguntas.add( new Pergunta(valores[0], valores[1]) );
 		}
@@ -43,7 +43,7 @@ public class FormularioPerguntas {
 		BufferedReader reader = new BufferedReader( new FileReader(arquivo) );
 
 		for (String linha = reader.readLine(); linha != null; linha = reader.readLine()) {
-			String valores[] = DivisorDeLinha.getValoresDividios(linha);
+			String valores[] = new DivisorDeLinha().getValoresDividios(linha);
 			// valores[0] = idPergunta; valores[1] = descriçãoPergunta
 			perguntas.put(valores[0], new Pergunta(valores[0], valores[1]) );
 		}
@@ -55,7 +55,7 @@ public class FormularioPerguntas {
 	public void atualizaPerguntas(List<Pergunta> perguntas) throws IOException {
 		BufferedWriter writer = new BufferedWriter( new FileWriter(arquivo) );
 		for (Pergunta pergunta : perguntas) {
-			writer.write( DivisorDeLinha.getValoresUnidos(pergunta.getId(), pergunta.getPergunta()) + System.lineSeparator() );
+			writer.write( new DivisorDeLinha().getValoresUnidos(pergunta.getId(), pergunta.getPergunta()) + System.lineSeparator() );
 		}
 		writer.close();
 	}
