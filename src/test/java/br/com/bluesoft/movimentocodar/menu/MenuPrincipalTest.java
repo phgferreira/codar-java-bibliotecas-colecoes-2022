@@ -30,18 +30,23 @@ class MenuPrincipalTest {
 	@Mock
 	private MenuTest menuTest;
 	
-	private static ByteArrayOutputStream tela;
+	private static ByteArrayOutputStream telaNormal;
+	private static ByteArrayOutputStream telaErro;
 	
 	@BeforeAll
 	static void beforeAll() {
-		tela = new ByteArrayOutputStream();
-		System.setOut( new PrintStream(tela) );
+		telaNormal = new ByteArrayOutputStream();
+		System.setOut( new PrintStream(telaNormal) );
+		
+		telaErro = new ByteArrayOutputStream();
+		System.setErr( new PrintStream(telaErro) );
 	}
 	
 	@AfterAll
 	static void afterAll() {
 		try {
-			tela.close();
+			telaNormal.close();
+			telaErro.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -66,11 +71,26 @@ class MenuPrincipalTest {
 		// Elemento teste
 		menuPrincipal.abreMenu();
 		
-		assertEquals( exibidoEmTela(), tela.toString() );
+		assertEquals( exibidoEmTelaQuandoEscolhidoCorretamente(), telaNormal.toString() );
 		
 	}
 	
-	private String exibidoEmTela() {
+	void deveExibirErroQuandoUsuarioEscolherOpcaoErrada() {
+		try {
+			// Para saber se o índice escolhido foi válido deve imprimir no final 'Abriu menu de teste'
+			Mockito.when(interfaceUsuario.getRespostaEmInteiro()).thenReturn(2);
+		} catch (NumberFormatException | IOException e) {
+			fail(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		// Elemento teste
+		menuPrincipal.abreMenu();
+		
+		assertEquals( exibeEmTelaQuandoEscolhidoOpcaoInvalida(), telaErro.toString() );
+	}
+	
+	private String exibidoEmTelaQuandoEscolhidoCorretamente() {
 		return	"### Menu Principal ###" + System.lineSeparator()
 				+ "0 - Menu de Teste" + System.lineSeparator()
 				+ "1 - Menu de Teste" + System.lineSeparator()
@@ -78,6 +98,11 @@ class MenuPrincipalTest {
 				+ "3 - Menu de Teste" + System.lineSeparator()
 				+ "4 - Menu de Teste" + System.lineSeparator()
 				+ "Abriu menu de teste" + System.lineSeparator();
+	}
+	
+	private String exibeEmTelaQuandoEscolhidoOpcaoInvalida() {
+		return  "Escolha apenas as opções numéricas existentes no menu" + System.lineSeparator()
+				+ "Por favor tente novamente" + System.lineSeparator();
 	}
 	
 	private List<Menu> montaListaMenu() {
