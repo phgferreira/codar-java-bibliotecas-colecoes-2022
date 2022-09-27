@@ -9,15 +9,15 @@ public class InterfaceUsuario {
 	private BufferedReader reader;
 	
 	public InterfaceUsuario() {
-		reader = new BufferedReader( new InputStreamReader(System.in) );
+		reader = new BufferedReader( new InputStreamReader( System.in ));
 	}
 	
-	public String pegaResposta() throws IOException {
+	public String getResposta() throws IOException {
 		return reader.readLine();
 	}
 	
-	public Integer pegaRespostaEmInteiro() throws NumberFormatException, IOException {
-		return Integer.parseInt(reader.readLine());
+	public Integer getRespostaEmInteiro() throws NumberFormatException, IOException {
+		return Integer.parseInt( reader.readLine() );
 	}
 	
 	public String perguntaAoUsuario(String texto) throws IOException {
