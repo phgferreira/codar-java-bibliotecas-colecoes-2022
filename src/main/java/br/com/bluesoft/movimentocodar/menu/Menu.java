@@ -1,12 +1,10 @@
 package br.com.bluesoft.movimentocodar.menu;
 
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioSaida;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 
 public abstract class Menu {
 	
-	protected InterfaceUsuarioEntrada entrada;
-	protected InterfaceUsuarioSaida saida;
+	protected InterfaceUsuario interfaceUsuario;
 	
 	public Menu() {
 		
@@ -17,9 +15,8 @@ public abstract class Menu {
 	 * @param entrada
 	 * @param saida
 	 */
-	public Menu(InterfaceUsuarioEntrada entrada, InterfaceUsuarioSaida saida) {
-		this.entrada = entrada;
-		this.saida = saida;
+	public Menu(InterfaceUsuario interfaceUsuario) {
+		this.interfaceUsuario = interfaceUsuario;
 	}
 	
 	public abstract String getTitulo();

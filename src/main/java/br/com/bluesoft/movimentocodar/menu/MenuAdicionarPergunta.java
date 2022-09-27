@@ -5,15 +5,15 @@ import java.util.List;
 
 import br.com.bluesoft.movimentocodar.excecao.PerguntaRepetidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 import br.com.bluesoft.movimentocodar.modelo.Pergunta;
 
 public class MenuAdicionarPergunta extends Menu {
 	
 	private FormularioPerguntas formularioPerguntas;
 
-	public MenuAdicionarPergunta(InterfaceUsuarioEntrada interfaceUsuarioEntrada, FormularioPerguntas formularioPerguntas) {
-		super(interfaceUsuarioEntrada);
+	public MenuAdicionarPergunta(InterfaceUsuario interfaceUsuario, FormularioPerguntas formularioPerguntas) {
+		super(interfaceUsuario);
 		this.formularioPerguntas = formularioPerguntas;
 	}
 

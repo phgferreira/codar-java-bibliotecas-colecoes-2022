@@ -9,47 +9,39 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioSaida;
-import br.com.bluesoft.movimentocodar.util.OpcoesMenuPrincipal;
+import br.com.bluesoft.movimentocodar.service.OpcoesSubmenu;
 
 class MenuPrincipalTest {
 
 	@Mock
-	private static InterfaceUsuarioEntrada entrada;
+	private InterfaceUsuario entrada;
 	
 	@Mock
 	private InterfaceUsuarioSaida saida;
 	
 	@Mock
-	private OpcoesMenuPrincipal opcoes;
+	private OpcoesSubmenu opcoes;
+
+	private ArgumentCaptor<String> captorDeTitulo;
+	private ArgumentCaptor<List<Menu>> captorDeOpcoes;
 
 	private MenuPrincipal menuPrincipal;
 	
-	private ArgumentCaptor<String> captorDeTitulo;
-	private ArgumentCaptor<List<Menu>> captorDeOpcoes;
+	private static int contador;
 	
-	@BeforeAll
-	static void beforeAll() {
-		entrada = new InterfaceUsuarioEntrada();
-		Mockito.mock(entrada.getClass());
-	}
-	
-	@AfterAll
-	static void afterAll() {
-		try {
-			entrada.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	@BeforeEach
+	void beforeEach() {
+		MockitoAnnotations.openMocks(this);
+		opcoes = Mockito.spy( new OpcoesSubmenu(entrada, saida));
 	}
 	
 	@Test
@@ -61,15 +53,13 @@ class MenuPrincipalTest {
 			e.printStackTrace();
 		}
 
-		saida = new InterfaceUsuarioSaida();
-		Mockito.mock(saida.getClass());
-		
-		opcoes = new OpcoesMenuPrincipal(entrada, saida);
-		Mockito.mock(opcoes.getClass());
-		// Falta retornar uma lista fictícia de opções
+		Mockito.when(opcoes.getOpcoes()).thenReturn(montaListaMenu());
+		Mockito.when(opcoes.getOpcao( Mockito.anyInt() )).thenReturn(new MenuSair(entrada, saida));
 
 		menuPrincipal = new MenuPrincipal(entrada, saida, opcoes);
+		System.out.println("Início do teste");
 		menuPrincipal.abreMenu();
+		System.out.println("Fim do teset");
 		
 		Mockito.verify(saida).exibeMensagem(captorDeTitulo.capture());
 		String titulo = captorDeTitulo.getValue();

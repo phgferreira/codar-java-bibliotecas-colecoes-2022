@@ -2,18 +2,18 @@ package br.com.bluesoft.movimentocodar.menu;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.List;
+import java.util.stream.IntStream;
 
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioSaida;
-import br.com.bluesoft.movimentocodar.util.OpcoesMenuPrincipal;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 
 public class MenuPrincipal extends Menu {
 	
-	private OpcoesMenuPrincipal opcoes;
-
-	public MenuPrincipal(InterfaceUsuarioEntrada entrada, InterfaceUsuarioSaida saida, OpcoesMenuPrincipal opcoes) {
-		super(entrada, saida);
-		this.opcoes = opcoes;
+	private List<Menu> opcoesSubmenu;
+	
+	public MenuPrincipal(InterfaceUsuario entrada, List<Menu> opcoesSubmenu) {
+		super(entrada);
+		this.opcoesSubmenu = opcoesSubmenu;
 	}
 
 	@Override
@@ -23,12 +23,14 @@ public class MenuPrincipal extends Menu {
 
 	@Override
 	public void abreMenu() {
-		saida.exibeMensagem("### " + this.getTitulo() + " ###");
-		saida.exibeOpcoesDeMenu(opcoes.getOpcoes());
+		System.out.println("### " + this.getTitulo() + " ###");
+		
+		IntStream.range(0, opcoesSubmenu.size())
+		.forEach( indice -> System.out.println(indice + " - " + opcoesSubmenu.get(indice).getTitulo()) );
 
 		try {
-			int escolha = entrada.getRespostaEmInteiro();
-			opcoes.getOpcao(escolha).abreMenu();
+			int escolha = interfaceUsuario.getRespostaEmInteiro();
+			opcoesSubmenu.get(escolha).abreMenu();
 		} catch (IndexOutOfBoundsException | InputMismatchException | NumberFormatException | IOException e) {
 			System.err.println("Escolha apenas as opções numéricas existentes no menu"
 					+ System.lineSeparator()

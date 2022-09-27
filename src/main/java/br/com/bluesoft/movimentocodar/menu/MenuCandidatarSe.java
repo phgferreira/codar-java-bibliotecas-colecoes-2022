@@ -8,7 +8,7 @@ import java.util.Map;
 import br.com.bluesoft.movimentocodar.excecao.IdadeNaoPermitidaException;
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
 import br.com.bluesoft.movimentocodar.io.FormulariosCandidato;
-import br.com.bluesoft.movimentocodar.io.InterfaceUsuarioEntrada;
+import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
 import br.com.bluesoft.movimentocodar.modelo.Pergunta;
 import br.com.bluesoft.movimentocodar.modelo.PerguntaComResposta;
 
@@ -16,8 +16,8 @@ public class MenuCandidatarSe extends Menu {
 	
 	private Map<String, PerguntaComResposta> perguntaComResposta = new HashMap<>();
 	
-	public MenuCandidatarSe(InterfaceUsuarioEntrada interfaceUsuarioEntrada) {
-		super(interfaceUsuarioEntrada);
+	public MenuCandidatarSe(InterfaceUsuario interfaceUsuario) {
+		super(interfaceUsuario);
 	}
 
 	@Override
