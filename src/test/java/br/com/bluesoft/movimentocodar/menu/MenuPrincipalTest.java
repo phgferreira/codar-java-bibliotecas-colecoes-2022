@@ -56,6 +56,7 @@ class MenuPrincipalTest {
 	@Test
 	void deveExibirMenuEPegarEscolhaDoUsuarioComOpcaoValida() {
 		try {
+			// Para saber se o índice escolhido foi válido deve imprimir no final 'Abriu menu de teste'
 			Mockito.when(interfaceUsuario.getRespostaEmInteiro()).thenReturn(2);
 		} catch (NumberFormatException | IOException e) {
 			fail(e.getMessage());
