@@ -1,6 +1,6 @@
 package br.com.bluesoft.movimentocodar.io;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
@@ -12,14 +12,38 @@ import br.com.bluesoft.movimentocodar.modelo.Pergunta;
 
 class FormularioPerguntasTest {
 
+	/**
+	 * Este teste depende que o arquivo formulario.txt esteja na raiz do projeto
+	 * e que suas primeiras perguntas estejam exatamente assim:
+	 * P1|Qual o seu nome completo?
+	 * P2|Qual seu e-mail?
+	 * P3|Qual sua idade?
+	 * P4|Qual seu whatsapp ou celular?
+	 */
 	@Test
 	void devePegarAsPerguntasDoFormularioEmLista() {
 		try {
 			FormularioPerguntas formularioPerguntas = new FormularioPerguntas();
+			
 			List<Pergunta> perguntas = formularioPerguntas.getPerguntasEmLista();
-			assertFalse(perguntas.isEmpty());
+			
+			if (perguntas.isEmpty())
+				throw new IllegalStateException("Lista de perguntas está vazia");
+			
+			assertEquals("P1", perguntas.get(0).getId());
+			assertEquals("Qual o seu nome completo?", perguntas.get(0).getPergunta());
+
+			assertEquals("P2", perguntas.get(1).getId());
+			assertEquals("Qual seu e-mail?", perguntas.get(1).getPergunta());
+			
+			assertEquals("P3", perguntas.get(2).getId());
+			assertEquals("Qual sua idade?", perguntas.get(2).getPergunta());
+			
+			assertEquals("P4", perguntas.get(3).getId());
+			assertEquals("Qual seu whatsapp ou celular?", perguntas.get(3).getPergunta());
 		} catch (IOException e) {
-			fail();
+			e.printStackTrace();
+			fail(e.getMessage());
 		}
 		
 	}
