@@ -1,71 +1,80 @@
-package br.com.bluesoft.movimentocodar.io;
+ package br.com.bluesoft.movimentocodar.io;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import br.com.bluesoft.movimentocodar.modelo.Pergunta;
 
 class FormularioPerguntasTest {
+	
+	private FormularioPerguntas formulario;
+	
+	@Mock
+	private LeitorFormulario leitor;
+	
+	private Iterator<String> dadosArquivo;
+	
+	@BeforeEach
+	void beforeEach() {
+		MockitoAnnotations.openMocks(this);
+		
+		formulario = new FormularioPerguntas(leitor);
 
-	/**
-	 * Este teste depende que o arquivo formulario.txt esteja na raiz do projeto
-	 * e que suas primeiras perguntas estejam exatamente assim:
-	 * P1|Qual o seu nome completo?
-	 * P2|Qual seu e-mail?
-	 * P3|Qual sua idade?
-	 * P4|Qual seu whatsapp ou celular?
-	 */
+		dadosArquivo = Arrays.asList(
+				"P1|Qual é o seu nome?",
+				"P2|Qual é a sua idade?",
+				"P3|Qual é o ano do seu nascimento?",
+				"P4|Qual é a sua cidade?")
+				.iterator();
+	}
+	
 	@Test
-	void devePegarAsPerguntasDoFormularioEmLista() {
+	void deveRetornarUmaListaDePerguntas() {
 		try {
-			FormularioPerguntas formularioPerguntas = new FormularioPerguntas();
-			
-			List<Pergunta> perguntas = formularioPerguntas.getPerguntasEmLista();
-			
-			if (perguntas.isEmpty())
-				throw new IllegalStateException("Lista de perguntas está vazia");
-			
-			assertEquals("P1", perguntas.get(0).getId());
-			assertEquals("Qual o seu nome completo?", perguntas.get(0).getPergunta());
+			Mockito.when(leitor.temProximo())
+				.thenReturn( true, true, true, true, false);
+			Mockito.when(leitor.proximaLinha())
+				.thenReturn( dadosArquivo.next(), dadosArquivo.next(),
+							 dadosArquivo.next(), dadosArquivo.next() );
 
-			assertEquals("P2", perguntas.get(1).getId());
-			assertEquals("Qual seu e-mail?", perguntas.get(1).getPergunta());
-			
-			assertEquals("P3", perguntas.get(2).getId());
-			assertEquals("Qual sua idade?", perguntas.get(2).getPergunta());
-			
-			assertEquals("P4", perguntas.get(3).getId());
-			assertEquals("Qual seu whatsapp ou celular?", perguntas.get(3).getPergunta());
-		} catch (IOException e) {
-			e.printStackTrace();
-			fail(e.getMessage());
+			List<Pergunta> perguntas = formulario.getListaDePerguntas();
+
+			assertEquals(4, perguntas.size());
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
 		
 	}
 
-	void devePegarAsPerguntasDoFormularioEmMapa() {
+	@Test
+	void deveRetornarUmaMapaDePerguntas() {
 		try {
-			FormularioPerguntas formularioPerguntas = new FormularioPerguntas();
-			
-			Map<String, Pergunta> perguntas = formularioPerguntas.getPerguntasEmMapa();
-			
-			if (perguntas.isEmpty())
-				throw new IllegalStateException("Lista de perguntas está vazia");
-			
-			assertEquals("Qual o seu nome completo?", perguntas.get("P1").getPergunta());
-			assertEquals("Qual seu e-mail?", perguntas.get("P2").getPergunta());
-			assertEquals("Qual sua idade?", perguntas.get("P3").getPergunta());
-			assertEquals("Qual seu whatsapp ou celular?", perguntas.get("P4").getPergunta());
-		} catch (IOException e) {
-			e.printStackTrace();
-			fail(e.getMessage());
+			Mockito.when(leitor.temProximo())
+				.thenReturn( true, true, true, true, false);
+			Mockito.when(leitor.proximaLinha())
+				.thenReturn( dadosArquivo.next(), dadosArquivo.next(),
+							 dadosArquivo.next(), dadosArquivo.next() );
+
+			Map<String, Pergunta> perguntas = formulario.getPerguntasEmMapa();
+
+			assertEquals(4, perguntas.size());
+			// Verifica se cada chave do mapa corresponde ao ID da pergunta (P1, P2, P3, ...)
+			perguntas.keySet().forEach( chave -> assertEquals(chave, perguntas.get(chave).getId()) );
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
 		
-	}	
+	}
+
 }
