@@ -56,6 +56,9 @@ class MenuPrincipalTest {
 	void beforeEach() {
 		MockitoAnnotations.openMocks(this);
 		menuPrincipal = new MenuPrincipal(interfaceUsuario, montaListaMenu());
+
+		// Limpa o console antes de começar a imprimir
+		telaNormal.reset();
 	}
 	
 	@Test
@@ -75,10 +78,11 @@ class MenuPrincipalTest {
 		
 	}
 	
+	@Test
 	void deveExibirErroQuandoUsuarioEscolherOpcaoErrada() {
 		try {
-			// Para saber se o índice escolhido foi válido deve imprimir no final 'Abriu menu de teste'
-			Mockito.when(interfaceUsuario.getRespostaEmInteiro()).thenReturn(2);
+			// Passa um índice que não existe na lista
+			Mockito.when(interfaceUsuario.getRespostaEmInteiro()).thenReturn(100);
 		} catch (NumberFormatException | IOException e) {
 			fail(e.getMessage());
 			e.printStackTrace();
