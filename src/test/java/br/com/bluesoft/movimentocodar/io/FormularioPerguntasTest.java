@@ -21,7 +21,7 @@ class FormularioPerguntasTest {
 	private FormularioPerguntas formulario;
 	
 	@Mock
-	private LeitorFormulario leitor;
+	private LeitorFormularioPerguntas leitor;
 	
 	private Iterator<String> dadosArquivo;
 	

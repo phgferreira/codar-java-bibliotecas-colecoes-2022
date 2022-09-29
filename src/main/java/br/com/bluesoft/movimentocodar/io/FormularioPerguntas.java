@@ -12,9 +12,9 @@ import br.com.bluesoft.movimentocodar.util.DivisorDeLinha;
 
 public class FormularioPerguntas {
 	
-	private LeitorFormulario leitor;
+	private LeitorFormularioPerguntas leitor;
 	
-	public FormularioPerguntas(LeitorFormulario arquivo) {
+	public FormularioPerguntas(LeitorFormularioPerguntas arquivo) {
 		this.leitor = arquivo;
 	}
 

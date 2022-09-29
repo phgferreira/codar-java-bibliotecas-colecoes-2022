@@ -6,6 +6,7 @@ import java.util.List;
 
 import br.com.bluesoft.movimentocodar.io.FormularioPerguntas;
 import br.com.bluesoft.movimentocodar.io.InterfaceUsuario;
+import br.com.bluesoft.movimentocodar.io.LeitorFormularioPerguntas;
 import br.com.bluesoft.movimentocodar.modelo.Pergunta;
 
 public class MenuAdicionarPergunta extends Menu {
@@ -26,7 +27,7 @@ public class MenuAdicionarPergunta extends Menu {
 		System.out.println(">>> " + this.getTitulo() + " <<<");
 		
 		try {
-			formularioPerguntas = new FormularioPerguntas();
+			formularioPerguntas = new FormularioPerguntas( new LeitorFormularioPerguntas() );
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,10 +1,8 @@
 package br.com.bluesoft.movimentocodar.io;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,35 +10,36 @@ import java.util.Map;
 import java.util.Set;
 
 import br.com.bluesoft.movimentocodar.modelo.PerguntaComResposta;
+import br.com.bluesoft.movimentocodar.util.DivisorDeLinha;
 import br.com.bluesoft.movimentocodar.util.FormatadorDeNomeParaArquivo;
 
 public class FormulariosCandidato {
 
-	private static final String CAMINHO_PASTA_CANDIDATOS = "C:\\candidatos\\";
-	private static final String EXTENSAO_PADRAO = "txt";
+	private String caminho = "C:\\candidatos\\";
+	private String extensao = "txt";
 
 	public void guardaNovoCandidato(Map<String, PerguntaComResposta> perguntaComResposta) throws IOException {
 		
-		String URL = CAMINHO_PASTA_CANDIDATOS
-				+ VerificadorNumeroArquivos.getUltimoNumero(CAMINHO_PASTA_CANDIDATOS)
+		String urlNovoCandidato = caminho
+				+ VerificadorNumeroArquivos.getUltimoNumero(caminho)
 				+ "-" + new FormatadorDeNomeParaArquivo().formata(perguntaComResposta.get("P1").getResposta())
-				+ "." + EXTENSAO_PADRAO;
+				+ "." + extensao;
 
-		BufferedWriter writer = new BufferedWriter(new FileWriter(URL));
+		GravadorFormularioCandidato gravador = new GravadorFormularioCandidato(urlNovoCandidato);
 		for (String idPergunta : perguntaComResposta.keySet()) {
-			writer.write(idPergunta + "|" 
-					+ perguntaComResposta.get(idPergunta).getPergunta().getPergunta() + "|"
-					+ perguntaComResposta.get(idPergunta).getResposta());
-			writer.newLine();
+			gravador.gravaLinha( new DivisorDeLinha().getValoresUnidos(
+					idPergunta,
+					perguntaComResposta.get(idPergunta).getPergunta().getPergunta(),
+					perguntaComResposta.get(idPergunta).getResposta()));
 		}
 		
-		writer.close();
+		gravador.close();
 		
 		System.out.println("--- Candidato " + perguntaComResposta.get("P1").getResposta() + " salvo com Sucesso ---");
 	}
 	
 	public Map<Integer, Set<String>> listarNomesPorIdade() throws IOException {
-		File arquivos[] = new File(CAMINHO_PASTA_CANDIDATOS).listFiles();
+		File arquivos[] = new File(caminho).listFiles();
 		Map<Integer, Set<String>> nomesPorIdade = new HashMap<>();
 
 		for (File arquivo : arquivos) {
@@ -73,7 +72,7 @@ public class FormulariosCandidato {
 	}
 	
 	public Set<String> getFormulariosDuplicados() throws IOException {
-		File arquivos[] = new File(CAMINHO_PASTA_CANDIDATOS).listFiles();
+		File arquivos[] = new File(caminho).listFiles();
 		Set<String> candidatos = new HashSet<>();
 		Set<String> duplicados = new HashSet<>();
 
@@ -103,7 +102,7 @@ public class FormulariosCandidato {
 	}
 
 	public boolean procuraCandidato(String nome, String email) throws IOException {
-		File arquivos[] = new File(CAMINHO_PASTA_CANDIDATOS).listFiles();
+		File arquivos[] = new File(caminho).listFiles();
 		for (File arquivo : arquivos) {
 			BufferedReader reader = new BufferedReader( new FileReader(arquivo));
 			

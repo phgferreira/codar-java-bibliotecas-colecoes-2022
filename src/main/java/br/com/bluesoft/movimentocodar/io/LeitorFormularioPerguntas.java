@@ -3,13 +3,13 @@ package br.com.bluesoft.movimentocodar.io;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class LeitorFormulario {
+public class LeitorFormularioPerguntas {
 
 	private String urlFormulario;
 	
 	private Scanner leitor;
 	
-	public LeitorFormulario() throws FileNotFoundException {
+	public LeitorFormularioPerguntas() throws FileNotFoundException {
 		urlFormulario = "formulario.txt";
 		leitor = new Scanner(urlFormulario);
 	}
